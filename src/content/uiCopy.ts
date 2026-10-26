@@ -24,7 +24,6 @@ export const uiCopy = {
   explanation: "ההסבר",
   signal: "הסימן בסיפור",
   correct: "זיהית נכון",
-  incorrect: "לא כל דגל אדום הוא קישוט",
   disclaimer:
     "דגל ירוק אינו אישור להשקיע או המלצה על אדם או מוצר. לפני שמשקיעים, בודקים.",
   noPhoto: "אין תמונה",

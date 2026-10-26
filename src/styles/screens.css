@@ -18,12 +18,12 @@
   grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   column-gap: 8px;
-  min-height: 52px;
-  padding: 16px 14px 8px;
+  min-height: 40px;
+  padding: 6px 12px 4px;
 }
 
 .app-bar .logo {
-  width: 108px;
+  width: 84px;
   justify-self: start;
 }
 
@@ -927,7 +927,7 @@
     width: min(760px, calc(100% - 48px));
     margin-inline: auto;
     min-height: 68px;
-    padding-inline: 4px;
+    padding: 16px 4px 8px;
   }
 
   .app-bar .logo {
@@ -1024,18 +1024,6 @@
 .start-screen .dock {
   position: relative;
   z-index: 1;
-}
-
-.start-screen .app-bar .logo {
-  width: 168px;
-  margin-top: 18px;
-}
-
-@media (min-width: 768px) {
-  .start-screen .app-bar .logo {
-    width: 240px;
-    margin-top: 36px;
-  }
 }
 
 .start-screen .start-body {
@@ -1141,30 +1129,111 @@
   white-space: nowrap;
 }
 
-@media (max-width: 699px) {
+@media (max-width: 767px) {
+  .start-screen .start-body,
+  .end-screen .end-body,
+  .feedback {
+    overflow: hidden;
+  }
+
+  .feedback {
+    padding: 24px 20px;
+    gap: 12px;
+  }
+
   .start-screen .game-mark {
     --mark: 1;
     margin-block: 0;
   }
 
+  .game-mark-cards {
+    width: 168px;
+    height: 96px;
+    margin: -4px -10px -10px;
+  }
+
+  .game-mark-face {
+    width: 72px;
+    height: 78px;
+    padding-top: 10px;
+  }
+
+  .game-mark-type {
+    margin-top: -34px;
+    padding-top: 8px;
+  }
+
+  .game-mark-word {
+    font-size: 44px;
+  }
+
+  .game-mark-sub {
+    font-size: 26px;
+  }
+
   .start-screen .start-body {
     justify-content: flex-start;
-    gap: 10px;
+    gap: 8px;
     margin-top: 0;
+    padding: 2px 20px 0;
+  }
+
+  .start-screen .start-story {
+    gap: 6px;
+  }
+
+  .start-screen .intro-lead {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .start-screen .concept {
+    font-size: 0.92rem;
+    line-height: 1.32;
+  }
+
+  .start-screen .tagline {
+    font-size: 14px;
+    line-height: 1.3;
   }
 
   .start-screen .start-dock {
-    margin-top: 8px;
+    gap: 6px;
+    margin-top: 4px;
     margin-bottom: 0;
+    padding-bottom: 8px;
+  }
+
+  .start-screen .intro-cta {
+    font-size: 1.2rem;
   }
 
   .start-screen .legend {
     margin-top: 0;
+    gap: 28px;
   }
 
   .start-screen .orb {
-    width: 60px;
-    height: 60px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .start-screen .primary-button,
+  .end-screen .primary-button {
+    min-height: 48px;
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 767px) and (min-height: 760px) {
+  .start-screen .start-body {
+    flex: 1 1 auto;
+    justify-content: space-evenly;
+    min-height: 0;
+  }
+
+  .start-screen .start-dock {
+    margin-bottom: 10px;
   }
 }
 
@@ -1188,7 +1257,6 @@
 }
 
 @media (min-width: 768px) and (min-height: 900px) {
-  .start-screen .app-bar,
   .start-screen .start-body,
   .start-screen .dock {
     width: min(1080px, calc(100% - 72px));
@@ -1256,10 +1324,6 @@
     --mark: clamp(1.44, calc(100dvh / 720px), 1.55);
   }
 
-  .start-screen .app-bar .logo {
-    margin-top: 12px;
-  }
-
   .start-screen .start-body {
     gap: 16px;
   }
@@ -1286,8 +1350,9 @@
   }
 
   .app-bar {
-    min-height: 44px;
-    padding-top: 14px;
+    min-height: 40px;
+    padding-top: 6px;
+    padding-bottom: 4px;
   }
 
   .end-medal {
@@ -1310,7 +1375,6 @@
   and the button spread down the glass instead of sitting in a tight cluster.
 */
 @media (min-width: 768px) and (max-width: 1200px) and (min-height: 1000px) {
-  .end-screen .app-bar,
   .end-screen .end-body,
   .end-screen .end-dock {
     width: min(920px, calc(100% - 72px));

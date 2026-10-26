@@ -11,6 +11,7 @@ type FeedbackPanelProps = {
 export function FeedbackPanel({ profile, outcome, line }: FeedbackPanelProps) {
   const panelRef = useRef<HTMLElement>(null)
   const correct = outcome.startsWith("correct")
+  const kicker = correct ? uiCopy.correct : line
 
   useEffect(() => {
     panelRef.current?.focus()
@@ -21,10 +22,10 @@ export function FeedbackPanel({ profile, outcome, line }: FeedbackPanelProps) {
       ref={panelRef}
       className={`feedback feedback-${outcome}`}
       tabIndex={-1}
-      aria-label={correct ? uiCopy.correct : uiCopy.incorrect}
+      aria-label={kicker}
     >
-      <p className="feedback-kicker">{correct ? uiCopy.correct : uiCopy.incorrect}</p>
-      <p className="punch prose">{line}</p>
+      <p className="feedback-kicker">{kicker}</p>
+      {correct ? <p className="punch prose">{line}</p> : null}
     </section>
   )
 }
