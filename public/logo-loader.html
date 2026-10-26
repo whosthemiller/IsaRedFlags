@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>אנימציית טעינה · לוגו הרשות</title>
+    <style>
+      :root {
+        --light-blue: #5cc8ed;
+        --primary-blue: #3781ff;
+        --light-grey: #f7f9ff;
+        --deep-blue: #00113f;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        background: var(--light-grey);
+        color: var(--deep-blue);
+        font-family: "Arial Hebrew", Arial, sans-serif;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 28px;
+        padding: 32px 20px;
+      }
+
+      .stage {
+        width: min(440px, 88vw);
+      }
+
+      .stage svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+      }
+
+      .bar {
+        transform-box: view-box;
+        transform: scaleY(0);
+        animation: wave 1.7s ease-in-out infinite;
+        animation-delay: var(--d);
+      }
+
+      .up { transform-origin: 0 149.26px; }
+      .down { transform-origin: 0 108.77px; }
+
+      @keyframes wave {
+        0%, 100% { transform: scaleY(0); }
+        50% { transform: scaleY(1); }
+      }
+
+      p {
+        margin: 0;
+        font-size: 14px;
+        letter-spacing: 0.01em;
+        opacity: 0.72;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .bar {
+          animation: none;
+          transform: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <div class="stage" role="img" aria-label="הלוגו הצבעוני של הרשות לניירות ערך נטען בגל">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286.84 258.03" aria-hidden="true">
+          <g>
+            <path class="bar down" style="--d: 0.213s" fill="#5cc8ed" d="M53.05,108.77v3.98c0,2.4-3.88,2.35-3.88,0v-3.98c0-2.73,3.84-2.76,3.88,0Z"/>
+            <path class="bar down" style="--d: 0.291s" fill="#5cc8ed" d="M72.43,108.77v14.5c0,2.4-3.88,2.35-3.88,0v-14.5c0-2.73,3.84-2.76,3.88,0Z"/>
+            <path class="bar down" style="--d: 0.353s" fill="#5cc8ed" d="M87.92,108.77c0-2.73,3.84-2.76,3.88,0v40.54c0,2.4-3.88,2.35-3.88,0"/>
+            <path class="bar down" style="--d: 1.134s" fill="#5cc8ed" d="M282.95,108.77v3.98c0,2.4,3.88,2.35,3.88,0v-3.98c0-2.73-3.84-2.76-3.88,0Z"/>
+            <path class="bar down" style="--d: 1.057s" fill="#5cc8ed" d="M263.56,108.77v14.5c0,2.4,3.88,2.35,3.88,0v-14.5c0-2.73-3.84-2.76-3.88,0Z"/>
+            <path class="bar down" style="--d: 0.994s" fill="#5cc8ed" d="M248.07,108.77c0-2.73-3.84-2.76-3.88,0v40.54c0,2.4,3.88,2.35,3.88,0"/>
+            <path class="bar down" style="--d: 0.431s" fill="#5cc8ed" d="M107.51,108.77c0-2.73,3.84-2.76,3.88,0v67.04c0,2.4-3.88,2.35-3.88,0"/>
+            <path class="bar down" style="--d: 0.900s" fill="#5cc8ed" d="M224.52,108.77c0-2.73,3.84-2.76,3.88,0v67.04c0,2.4-3.88,2.35-3.88,0"/>
+            <path class="bar down" style="--d: 0.510s" fill="#5cc8ed" d="M127.05,108.77c0-2.73,3.84-2.76,3.88,0v93.43c0,2.4-3.88,2.35-3.88,0"/>
+            <path class="bar down" style="--d: 0.827s" fill="#5cc8ed" d="M206.18,108.77c0-2.73,3.84-2.76,3.88,0v93.43c0,2.4-3.88,2.35-3.88,0"/>
+            <path class="bar down" style="--d: 0.588s" fill="#5cc8ed" d="M146.51,108.77c0-2.73,3.84-2.76,3.88,0v120.02c0,2.4-3.88,2.35-3.88,0"/>
+            <path class="bar down" style="--d: 0.666s" fill="#5cc8ed" d="M166.1,108.77c0-2.73,3.84-2.76,3.88,0v147.48c0,2.4-3.88,2.35-3.88,0"/>
+            <path class="bar down" style="--d: 0.744s" fill="#5cc8ed" d="M185.49,108.77c0-2.73,3.84-2.76,3.88,0v119.82c0,2.4-3.88,2.35-3.88,0"/>
+            <path class="bar up" style="--d: 0.937s" fill="#3781ff" d="M233.79,149.26v-3.98c0-2.4,3.88-2.35,3.88,0v3.98c0,2.73-3.84,2.76-3.88,0Z"/>
+            <path class="bar up" style="--d: 0.860s" fill="#3781ff" d="M214.4,149.26v-14.5c0-2.4,3.88-2.35,3.88,0v14.5c0,2.73-3.84,2.76-3.88,0Z"/>
+            <path class="bar up" style="--d: 0.798s" fill="#3781ff" d="M198.91,149.26c0,2.73-3.84,2.76-3.88,0v-40.54c0-2.4,3.88-2.35,3.88,0"/>
+            <path class="bar up" style="--d: 0.016s" fill="#3781ff" d="M3.88,149.26v-3.98c0-2.4-3.88-2.35-3.88,0v3.98c0,2.73,3.84,2.76,3.88,0Z"/>
+            <path class="bar up" style="--d: 0.093s" fill="#3781ff" d="M23.27,149.26v-14.5c0-2.4-3.88-2.35-3.88,0v14.5c0,2.73,3.84,2.76,3.88,0Z"/>
+            <path class="bar up" style="--d: 0.155s" fill="#3781ff" d="M38.76,149.26c0,2.73,3.84,2.76,3.88,0v-40.54c0-2.4-3.88-2.35-3.88,0"/>
+            <path class="bar up" style="--d: 0.719s" fill="#3781ff" d="M179.33,149.26c0,2.73-3.84,2.76-3.88,0v-67.04c0-2.4,3.88-2.35,3.88,0"/>
+            <path class="bar up" style="--d: 0.250s" fill="#3781ff" d="M62.32,149.26c0,2.73-3.84,2.76-3.88,0v-67.04c0-2.4,3.88-2.35,3.88,0"/>
+            <path class="bar up" style="--d: 0.641s" fill="#3781ff" d="M159.79,149.26c0,2.73-3.84,2.76-3.88,0V55.83c0-2.4,3.88-2.35,3.88,0"/>
+            <path class="bar up" style="--d: 0.323s" fill="#3781ff" d="M80.65,149.26c0,2.73-3.84,2.76-3.88,0V55.83c0-2.4,3.88-2.35,3.88,0"/>
+            <path class="bar up" style="--d: 0.563s" fill="#3781ff" d="M140.33,149.26c0,2.73-3.84,2.76-3.88,0V29.24c0-2.4,3.88-2.35,3.88,0"/>
+            <path class="bar up" style="--d: 0.484s" fill="#3781ff" d="M120.73,149.26c0,2.73-3.84,2.76-3.88,0V1.78c0-2.4,3.88-2.35,3.88,0"/>
+            <path class="bar up" style="--d: 0.407s" fill="#3781ff" d="M101.35,149.26c0,2.73-3.84,2.76-3.88,0V29.44c0-2.4,3.88-2.35,3.88,0"/>
+          </g>
+        </svg>
+      </div>
+    </main>
+  </body>
+</html>

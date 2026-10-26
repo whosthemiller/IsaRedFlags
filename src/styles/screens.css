@@ -27,6 +27,54 @@
   justify-self: start;
 }
 
+.loading-screen .app-frame {
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-loader {
+  width: min(220px, 58vw);
+}
+
+.logo-loader svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.logo-loader .bar {
+  transform-box: view-box;
+  transform: scaleY(0);
+  animation: logo-wave 1.7s ease-in-out infinite;
+}
+
+.logo-loader .up {
+  transform-origin: 0 149.26px;
+}
+
+.logo-loader .down {
+  transform-origin: 0 108.77px;
+}
+
+@keyframes logo-wave {
+  0%,
+  100% {
+    transform: scaleY(0);
+  }
+
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-loader .bar {
+    animation: none;
+    transform: none;
+  }
+}
+
 .app-bar-gap {
   display: block;
 }
