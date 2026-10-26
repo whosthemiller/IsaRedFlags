@@ -209,6 +209,18 @@ html.ios-safari #root {
   background: var(--white);
 }
 
+/*
+  Percentage heights collapse once the root height is auto, and the profile
+  card is absolutely positioned, so the deck falls to nothing. A definite
+  viewport height keeps the card on screen. The start screen keeps its own
+  small-viewport height.
+*/
+html.ios-safari .game-screen,
+html.ios-safari .end-screen {
+  height: 100dvh;
+  max-height: 100dvh;
+}
+
 html.ios-safari .screen {
   margin-top: var(--safari-scroll-offset);
 }
