@@ -1,0 +1,240 @@
+@font-face {
+  font-family: "Simpler";
+  src: url("/fonts/SimplerPro-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Simpler";
+  src: url("/fonts/SimplerPro-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Simpler Italic";
+  src: url("/fonts/SimplerPro-RegularItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Simpler Ext Bold";
+  src: url("/fonts/SimplerProExtended-Bold.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Assistant";
+  src: url("/fonts/Assistant-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alef";
+  src: url("/fonts/Alef-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Alef";
+  src: url("/fonts/Alef-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+html {
+  background: var(--canvas);
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+  font-family: var(--font-sans);
+  font-size: var(--type-body);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--deep-blue);
+  background: var(--canvas);
+  text-rendering: geometricPrecision;
+  text-wrap: balance;
+}
+
+#root {
+  position: relative;
+  z-index: 1;
+  min-height: 100dvh;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: 0;
+  background: none;
+  padding: 0;
+  touch-action: manipulation;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+p,
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+h1,
+h2,
+.punch,
+.choice-label,
+.primary-button,
+.next-button {
+  line-height: 1.25;
+}
+
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus);
+}
+
+::selection {
+  background: var(--deep-blue);
+  color: var(--white);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.prose {
+  white-space: pre-wrap;
+  text-wrap: balance;
+}
+
+.screen {
+  position: relative;
+  height: 100dvh;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--canvas);
+}
+
+.screen-inner {
+  width: min(1120px, 100%);
+  margin-inline: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  width: clamp(168px, 22vw, 240px);
+  height: auto;
+}
+
+.logo-large {
+  width: clamp(210px, 28vw, 320px);
+}
+
+.disclaimer {
+  color: var(--dark-grey);
+  font-size: var(--type-small);
+  line-height: 1.4;
+  text-align: center;
+}
+
+.primary-button,
+.next-button {
+  border-radius: 999px;
+  min-height: 52px;
+  min-width: 44px;
+  width: 100%;
+  font-weight: 700;
+  font-size: 1.0625rem;
+  background: var(--dark-blue);
+  color: var(--white);
+  padding: 14px 24px;
+  box-shadow: 0 8px 18px rgba(35, 99, 209, 0.22);
+}
+
+.primary-button:hover,
+.next-button:hover {
+  background: #1c58b8;
+}
+
+.primary-button:active,
+.next-button:active {
+  transform: scale(0.98);
+}
+
+.ghost-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--deep-blue);
+  border: 0;
+  display: grid;
+  place-items: center;
+}
+
+.ghost-button svg {
+  width: 22px;
+  height: 22px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

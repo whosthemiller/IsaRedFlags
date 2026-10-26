@@ -1,0 +1,18 @@
+Simpler Pro
+Copyright 2016 by Michal Sahar. All rights reserved.
+Simpler is a trademark of Michal Sahar.
+The Regular and Bold files in this folder were supplied for the ISA game
+and are the official brand face (סימפלר תלת־לשוני). They are not open-source.
+
+Assistant
+Copyright 2020 The Assistant Project Authors (https://github.com/hafontia/Assistant).
+Hebrew by Ben Nathan. Latin by Paul Hunt.
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+https://scripts.sil.org/OFL
+
+Alef
+Copyright 2013–2016 Mushon Zer-Aviv and the Hebrew Open Source Fonts Project.
+Licensed under the SIL Open Font License, Version 1.1.
+https://scripts.sil.org/OFL
+
+Assistant and Alef load only if Simpler fails.

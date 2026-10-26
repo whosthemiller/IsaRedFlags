@@ -1,0 +1,96 @@
+/*
+  ISA brand tokens
+  Source: ספר מותג הרשות לניירות ערך
+
+  PDF p.15 / book "פלטה צבעונית"
+    Light Blue #5cc8ed, Primary Blue #3781ff, Dark Blue #2363d1,
+    Green #4ae8c3, Lavender #aeb8f0, Purple #9747ff,
+    White #ffffff, Light Grey #f7f9ff, Bright Blue #e5eeff,
+    Deep Blue #00113f, Dark Grey #313131, Orange #ff7e67.
+
+  PDF p.16–17 color rules
+    Small text uses Deep Blue, Dark Grey, or Dark Blue.
+    Primary Blue on white is about 3.7:1, so it is used for bold type
+    at 20px and above, not for body copy.
+    White type sits on Dark Blue, Purple, and Deep Blue.
+
+  PDF p.11–13 typography
+    Simpler is the official face (סימפלר תלת־לשוני, p.11).
+    Sizes follow 40 / 24 / 16 / 12 pt.
+    Self-hosted Simpler Pro Regular (400) and Bold (700).
+    Assistant and Alef remain fallbacks only.
+
+  PDF p.7–9 logo
+    Full color lockup on light surfaces. Do not recolor, rotate,
+    reorder, or stretch it. A numeric clear-space value was not
+    encoded as text; the lockup keeps its own aspect ratio and padding.
+
+  PDF p.13 grid
+    No numeric spacing scale was published. Applied spacing is an 8px grid.
+
+  PDF p.19–21 shapes, trinkets, patterns
+    Large rounded rectangles, pills, dashed rules, stars, clouds,
+    and a triangle pattern in the brand blues.
+
+  PDF p.22 iconography
+    Supplied line icons stay #161616 on light badges.
+
+  Semantic answer colors are used only for the red-flag and green-flag
+  actions, stamps, and result panels.
+  Green fills use the brand green. The palette has no separate red:
+  red-flag fills use the brand orange. A correct answer is always green,
+  including a correctly spotted red flag. Stamp lettering stays a darker
+  shade of the orange so it stays readable on white.
+  The like heart, swipe wash, and like stamp all use --green.
+  The pass mark, swipe wash, and pass stamp border all use --orange.
+*/
+
+:root {
+  --light-blue: #5cc8ed;
+  --primary-blue: #3781ff;
+  --dark-blue: #2363d1;
+  --green: #4ae8c3;
+  --lavender: #aeb8f0;
+  --purple: #9747ff;
+  --white: #ffffff;
+  --light-grey: #f7f9ff;
+  --bright-blue: #e5eeff;
+  --deep-blue: #00113f;
+  --dark-grey: #313131;
+  --orange: #ff7e67;
+  --logo-ink: #575858;
+  --icon: #161616;
+
+  --ink-red: #803f34;
+  --ink-green: #087255;
+  --ink-miss: #803f34;
+  --ink-soft: #5b3cc4;
+  --tint-red: #fff0ed;
+  --tint-green: #f1fdf8;
+  --tint-lavender: #f3f1ff;
+
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --radius-card: 32px;
+  --radius-control: 20px;
+  --radius-small: 14px;
+
+  --type-display: clamp(2rem, 4vw, 2.5rem);
+  --type-title: clamp(1.25rem, 2vw, 1.5rem);
+  --type-body: 1rem;
+  --type-small: 0.75rem;
+
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --canvas: #e6e9ee;
+  --nope: var(--orange);
+  --like: var(--green);
+  --font-sans: "Simpler", "Assistant", "Alef", "Arial Hebrew", "Noto Sans Hebrew", sans-serif;
+  --focus: 0 0 0 3px var(--white), 0 0 0 6px var(--deep-blue);
+  color-scheme: light;
+  font-family: var(--font-sans);
+  color: var(--deep-blue);
+  background: var(--light-grey);
+}
