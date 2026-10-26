@@ -20,6 +20,8 @@ npm run preview
 
 מקור התוכן הוא `isa_swipe_game_content.json` בשורש הפרויקט. האפליקציה מייבאת אותו ולא שומרת עותק. אין לשנות את הניסוח, את הדגלים או את שגיאות המקור בלי אישור מערכת. רשימת הערות נמצאת ב־`EDITORIAL_QA.md`.
 
+בזמן `npm run dev`, הכתובת `/review` מציגה את כל הפרופילים בשדות טקסט. שמירה כותבת ל־`isa_swipe_game_content.json`, ורענון המשחק מציג את הנוסח החדש. באתר שנבנה אין שמירה, רק קריאה.
+
 שדות חובה בכל פרופיל: `id`, `name`, `age`, `flag` (`red` או `green`), `difficulty` (`easy`, `medium` או `hard`), `tagline`, `bio`, `openingMessage`, `explanation`, `image`. `customFeedback` רשות. `image: null` מציג מציין מקום ממותג, בלי תמונת פנים מומצאת.
 
 כדי לחבר תמונה מקומית:

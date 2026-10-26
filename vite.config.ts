@@ -1,9 +1,10 @@
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vitest/config"
+import { contentEditorPlugin } from "./contentEditorPlugin"
 
 export default defineConfig({
   base: process.env.VITE_BASE || "/",
-  plugins: [react()],
+  plugins: [react(), contentEditorPlugin()],
   server: {
     host: true,
     port: 5173,

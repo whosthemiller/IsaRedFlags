@@ -12,6 +12,12 @@
     <title>השקעה ממבט ראשון</title>
     <script>
       ;(function () {
+        var path = location.pathname.replace(/\/+$/, "") || "/"
+        if (path.endsWith("/review")) {
+          document.documentElement.classList.add("review-doc")
+          return
+        }
+
         var iOS =
           /iPad|iPhone|iPod/.test(navigator.userAgent) ||
           (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
@@ -39,12 +45,14 @@
         window.__pinSafariStatusBar = pin
       })()
 
-      document.addEventListener("wheel", function (event) {
-        event.preventDefault()
-      }, { passive: false })
-      document.addEventListener("touchmove", function (event) {
-        if (event.cancelable) event.preventDefault()
-      }, { passive: false })
+      if (!document.documentElement.classList.contains("review-doc")) {
+        document.addEventListener("wheel", function (event) {
+          event.preventDefault()
+        }, { passive: false })
+        document.addEventListener("touchmove", function (event) {
+          if (event.cancelable) event.preventDefault()
+        }, { passive: false })
+      }
     </script>
     <style>
       html, body {
@@ -81,6 +89,18 @@
 
       html.ios-safari .screen {
         margin-top: var(--safari-scroll-offset);
+      }
+
+      html.review-doc,
+      html.review-doc body,
+      html.review-doc #root {
+        height: auto;
+        max-height: none;
+        overflow: auto;
+        position: static;
+        inset: auto;
+        width: auto;
+        touch-action: auto;
       }
     </style>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
