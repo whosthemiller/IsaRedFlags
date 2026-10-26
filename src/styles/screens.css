@@ -1130,6 +1130,16 @@
 }
 
 @media (max-width: 767px) {
+  .start-screen {
+    height: 100svh;
+    min-height: 100svh;
+    max-height: 100svh;
+  }
+
+  .start-screen .app-frame {
+    container-type: size;
+  }
+
   .start-screen .start-body,
   .end-screen .end-body,
   .feedback {
@@ -1142,8 +1152,8 @@
   }
 
   .start-screen .game-mark {
-    --mark: 1;
-    margin-block: 0;
+    --mark: clamp(1, calc(100cqh / 720px), 1.22);
+    margin-block: calc((var(--mark) - 1) * 72px);
   }
 
   .game-mark-cards {
@@ -1172,68 +1182,59 @@
   }
 
   .start-screen .start-body {
-    justify-content: flex-start;
-    gap: 8px;
+    flex: 1 1 auto;
+    min-height: 0;
+    justify-content: space-evenly;
+    gap: clamp(10px, 2.2cqh, 24px);
     margin-top: 0;
-    padding: 2px 20px 0;
+    padding: 0 22px;
   }
 
   .start-screen .start-story {
-    gap: 6px;
+    gap: clamp(8px, 1.3cqh, 14px);
   }
 
   .start-screen .intro-lead {
-    font-size: 1rem;
-    line-height: 1.3;
-  }
-
-  .start-screen .concept {
-    font-size: 0.92rem;
+    font-size: clamp(1rem, 2.45cqh, 1.16rem);
     line-height: 1.32;
   }
 
+  .start-screen .concept {
+    font-size: clamp(0.92rem, 2.05cqh, 1.02rem);
+    line-height: 1.4;
+  }
+
   .start-screen .tagline {
-    font-size: 14px;
-    line-height: 1.3;
+    font-size: clamp(14px, 2.1cqh, 17px);
+    line-height: 1.35;
   }
 
   .start-screen .start-dock {
-    gap: 6px;
-    margin-top: 4px;
+    flex-shrink: 0;
+    gap: clamp(8px, 1.5cqh, 14px);
+    margin-top: 0;
     margin-bottom: 0;
-    padding-bottom: 8px;
+    padding-bottom: 10px;
   }
 
   .start-screen .intro-cta {
-    font-size: 1.2rem;
+    font-size: clamp(1.22rem, 3.2cqh, 1.6rem);
   }
 
   .start-screen .legend {
     margin-top: 0;
-    gap: 28px;
+    gap: clamp(32px, 12vw, 56px);
   }
 
   .start-screen .orb {
-    width: 48px;
-    height: 48px;
+    width: clamp(54px, 8cqh, 70px);
+    height: clamp(54px, 8cqh, 70px);
   }
 
   .start-screen .primary-button,
   .end-screen .primary-button {
-    min-height: 48px;
-    font-size: 1.05rem;
-  }
-}
-
-@media (max-width: 767px) and (min-height: 760px) {
-  .start-screen .start-body {
-    flex: 1 1 auto;
-    justify-content: space-evenly;
-    min-height: 0;
-  }
-
-  .start-screen .start-dock {
-    margin-bottom: 10px;
+    min-height: clamp(50px, 7cqh, 62px);
+    font-size: clamp(1.05rem, 2.4cqh, 1.22rem);
   }
 }
 
