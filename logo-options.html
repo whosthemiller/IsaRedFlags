@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>לוגו 02 · השקעה ממבט ראשון</title>
+    <style>
+      @font-face { font-family: "Simpler"; src: url("fonts/SimplerPro-Regular.otf") format("opentype"); font-display: swap; }
+      @font-face { font-family: "Simpler Italic"; src: url("fonts/SimplerPro-RegularItalic.otf") format("opentype"); font-display: swap; }
+      @font-face { font-family: "Simpler Semi"; src: url("fonts/SimplerPro-Semibold.otf") format("opentype"); font-display: swap; }
+      @font-face { font-family: "Simpler Bold"; src: url("fonts/SimplerPro-Bold.otf") format("opentype"); font-display: swap; }
+      @font-face { font-family: "Simpler Ext Bold"; src: url("fonts/SimplerProExtended-Bold.otf") format("opentype"); font-display: swap; }
+
+      :root {
+        --primary: #3781ff;
+        --dark: #2363d1;
+        --green: #4ae8c3;
+        --orange: #ff7e67;
+        --white: #fff;
+        --grey: #f7f9ff;
+        --bright: #e5eeff;
+        --deep: #00113f;
+        --font: "Simpler", "Arial Hebrew", sans-serif;
+      }
+
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--grey); color: var(--deep); font-family: var(--font); line-height: 1.45; text-wrap: balance; }
+      main { width: min(860px, calc(100% - 32px)); margin: 0 auto; padding: 40px 0 72px; }
+      header h1 { margin: 0 0 8px; font-family: "Simpler Semi", sans-serif; font-size: 36px; line-height: 1.1; }
+      header p { margin: 0; max-width: 38rem; font-size: 18px; }
+      .row { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 28px; align-items: flex-start; }
+      article {
+        width: min(390px, 100%);
+        background: var(--white);
+        border-radius: 28px;
+        padding: 22px 18px 26px;
+      }
+      .kicker { margin: 0 0 8px; color: var(--dark); font-family: "Simpler Semi", sans-serif; font-size: 13px; }
+
+      .lock { display: flex; flex-direction: column; align-items: center; text-align: center; padding-top: 6px; }
+      .cards { position: relative; width: 186px; height: 108px; }
+      .face {
+        position: absolute;
+        width: 92px;
+        height: 100px;
+        border-radius: 16px;
+        background: var(--white);
+        border: 2px solid var(--deep);
+        display: grid;
+        justify-content: center;
+        align-content: start;
+        padding-top: 14px;
+      }
+      .face.heart { left: 0; top: 8px; transform: rotate(-13deg); }
+      .face.chart { right: 0; top: 6px; transform: rotate(13deg); }
+      .face svg { width: 38px; height: auto; justify-self: center; }
+      .face.heart svg { width: 36px; }
+      .type {
+        position: relative;
+        z-index: 1;
+        margin-top: -46px;
+        padding-top: 16px;
+      }
+      .type::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 50%;
+        top: 0;
+        width: 300px;
+        height: 100%;
+        transform: translateX(-50%);
+        background: linear-gradient(to top, #fff 0, #fff calc(100% - 22px), transparent 100%);
+        pointer-events: none;
+      }
+      .word {
+        position: relative;
+        margin: 0;
+        font-family: "Simpler Ext Bold", sans-serif;
+        font-size: 58px;
+        line-height: 0.9;
+        letter-spacing: -0.045em;
+        color: var(--primary);
+        white-space: nowrap;
+      }
+      .sub {
+        margin: 4px 0 0;
+        font-family: "Simpler Bold", sans-serif;
+        font-size: 36px;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        color: var(--deep);
+        white-space: nowrap;
+      }
+      .screen { padding: 18px 0 28px; overflow: hidden; }
+      .screen .lock { padding: 0 16px; }
+      .tagline {
+        margin: 10px 16px 0;
+        font-family: "Simpler Italic", "Simpler", sans-serif;
+        font-size: 15px;
+        font-weight: 400;
+        font-style: normal;
+        line-height: 1.4;
+        color: #313131;
+        text-align: center;
+        white-space: nowrap;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>02 · המילה על הקלפים</h1>
+        <p>הטקסט עלה מעט. מאחוריו גרדיאנט לבן שנמס כלפי מעלה, כדי שהמתאר לא ייחתך באותיות.</p>
+      </header>
+
+      <div class="row">
+        <article>
+          <p class="kicker">הסימן</p>
+          <div class="lock">
+            <div class="cards">
+              <div class="face heart">
+                <svg viewBox="0 0 48 48" aria-hidden="true">
+                  <path fill="#ff7e67" d="M24 41C18 34 7.5 28 7.5 17.5A8.5 8.5 0 0 1 24 14.6 8.5 8.5 0 0 1 40.5 17.5C40.5 28 30 34 24 41z" />
+                </svg>
+              </div>
+              <div class="face chart">
+                <svg viewBox="0.7 2 37.3 38.5" aria-hidden="true">
+                  <rect x="4" y="26" width="8" height="13" rx="2" fill="#5cc8ed" />
+                  <rect x="16" y="18" width="8" height="21" rx="2" fill="#4ae8c3" />
+                  <rect x="28" y="14" width="8" height="25" rx="2" fill="#2363d1" />
+                  <path d="M4 18 L28 7" fill="none" stroke="#3781ff" stroke-width="2.6" stroke-linecap="round" />
+                  <path fill="#3781ff" d="M35.6 3.4 29.4 10.2 26.4 3.6z" />
+                </svg>
+              </div>
+            </div>
+            <div class="type">
+              <p class="word">השקעה</p>
+              <p class="sub">ממבט ראשון</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="screen">
+          <div class="lock">
+            <div class="cards">
+              <div class="face heart">
+                <svg viewBox="0 0 48 48" aria-hidden="true">
+                  <path fill="#ff7e67" d="M24 41C18 34 7.5 28 7.5 17.5A8.5 8.5 0 0 1 24 14.6 8.5 8.5 0 0 1 40.5 17.5C40.5 28 30 34 24 41z" />
+                </svg>
+              </div>
+              <div class="face chart">
+                <svg viewBox="0.7 2 37.3 38.5" aria-hidden="true">
+                  <rect x="4" y="26" width="8" height="13" rx="2" fill="#5cc8ed" />
+                  <rect x="16" y="18" width="8" height="21" rx="2" fill="#4ae8c3" />
+                  <rect x="28" y="14" width="8" height="25" rx="2" fill="#2363d1" />
+                  <path d="M4 18 L28 7" fill="none" stroke="#3781ff" stroke-width="2.6" stroke-linecap="round" />
+                  <path fill="#3781ff" d="M35.6 3.4 29.4 10.2 26.4 3.6z" />
+                </svg>
+              </div>
+            </div>
+            <div class="type">
+              <p class="word">השקעה</p>
+              <p class="sub">ממבט ראשון</p>
+            </div>
+          </div>
+          <p class="tagline">את הדגלים האדומים תשאירו לאקסים, לא לתיק ההשקעות.</p>
+        </article>
+      </div>
+    </main>
+  </body>
+</html>
