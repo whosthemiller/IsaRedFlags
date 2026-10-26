@@ -1,6 +1,5 @@
 import { uiCopy } from "../content/uiCopy"
 import { Disclaimer } from "./Disclaimer"
-import { FullScreenButton } from "./FullScreenButton"
 import { GameMark } from "./GameMark"
 import { IconHeart, IconNope } from "./icons"
 import { Logo } from "./Logo"
@@ -16,9 +15,6 @@ export function StartScreen({ onStart }: StartScreenProps) {
         <header className="app-bar">
           <Logo />
           <span className="app-bar-gap" />
-          <div className="tools">
-            <FullScreenButton />
-          </div>
         </header>
         <div className="start-body">
           <div className="start-hero">

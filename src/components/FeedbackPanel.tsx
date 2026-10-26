@@ -12,6 +12,7 @@ export function FeedbackPanel({ profile, outcome, line }: FeedbackPanelProps) {
   const panelRef = useRef<HTMLElement>(null)
   const correct = outcome.startsWith("correct")
   const kicker = correct ? uiCopy.correct : line
+  const flagLabel = profile.flag === "red" ? uiCopy.redFlag : uiCopy.greenFlag
 
   useEffect(() => {
     panelRef.current?.focus()
@@ -26,6 +27,10 @@ export function FeedbackPanel({ profile, outcome, line }: FeedbackPanelProps) {
     >
       <p className="feedback-kicker">{kicker}</p>
       {correct ? <p className="punch prose">{line}</p> : null}
+      <div className="explanation-block">
+        <p className={`explanation-label explanation-label-${profile.flag}`}>{flagLabel}</p>
+        <p className="explanation prose">{profile.explanation}</p>
+      </div>
     </section>
   )
 }

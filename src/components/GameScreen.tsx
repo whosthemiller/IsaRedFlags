@@ -4,7 +4,6 @@ import type { Direction, RoundState } from "../types/content"
 import { outcomeOf } from "../utils/game"
 import { Disclaimer } from "./Disclaimer"
 import { FeedbackPanel } from "./FeedbackPanel"
-import { FullScreenButton } from "./FullScreenButton"
 import { IconHeart, IconNope } from "./icons"
 import { Logo } from "./Logo"
 import { Portrait } from "./Portrait"
@@ -69,10 +68,7 @@ export function GameScreen({ round, onDecide, onNext }: GameScreenProps) {
                 </bdi>
                 <span className="score-label">{uiCopy.scoreLabel}</span>
               </p>
-            ) : (
-              <span className="score-spacer" />
-            )}
-            <FullScreenButton />
+            ) : null}
           </div>
         </header>
 

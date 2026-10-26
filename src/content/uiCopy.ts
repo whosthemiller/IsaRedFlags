@@ -27,8 +27,6 @@ export const uiCopy = {
   disclaimer:
     "דגל ירוק אינו אישור להשקיע או המלצה על אדם או מוצר. לפני שמשקיעים, בודקים.",
   noPhoto: "אין תמונה",
-  fullscreen: "מסך מלא",
-  exitFullscreen: "יציאה ממסך מלא",
   contentError: "לא הצלחנו לטעון את תוכן המשחק.",
   progress: "התקדמות בסיבוב",
 } as const

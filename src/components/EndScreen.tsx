@@ -2,7 +2,6 @@ import { gameConfig } from "../config/gameConfig"
 import { endResultForScore, uiCopy } from "../content/uiCopy"
 import type { RoundState } from "../types/content"
 import { Disclaimer } from "./Disclaimer"
-import { FullScreenButton } from "./FullScreenButton"
 import { Logo } from "./Logo"
 import { Spark } from "./Spark"
 
@@ -19,9 +18,6 @@ export function EndScreen({ round, onRestart }: EndScreenProps) {
         <header className="app-bar">
           <Logo />
           <span className="app-bar-gap" />
-          <div className="tools">
-            <FullScreenButton />
-          </div>
         </header>
         <div className="end-body">
           <h1 dir="rtl">{result.title}</h1>

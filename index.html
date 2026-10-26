@@ -38,17 +38,44 @@
         window.addEventListener("load", pin)
         window.__pinSafariStatusBar = pin
       })()
+
+      document.addEventListener("wheel", function (event) {
+        event.preventDefault()
+      }, { passive: false })
+      document.addEventListener("touchmove", function (event) {
+        if (event.cancelable) event.preventDefault()
+      }, { passive: false })
     </script>
     <style>
+      html, body {
+        height: 100%;
+        overflow: hidden;
+        overscroll-behavior: none;
+        background: #fff;
+      }
+
+      body {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        margin: 0;
+      }
+
       html.ios-safari {
         --safari-scroll-offset: 62px;
+        height: auto;
         overflow-y: scroll;
         overscroll-behavior: none;
         background: #fff;
       }
 
       html.ios-safari body {
+        position: static;
+        inset: auto;
+        width: auto;
+        height: auto;
         min-height: calc(100dvh + var(--safari-scroll-offset));
+        overflow: visible;
         background: #fff;
       }
 

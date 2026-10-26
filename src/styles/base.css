@@ -63,7 +63,9 @@
 html,
 body,
 #root {
-  min-height: 100%;
+  height: 100%;
+  max-height: 100dvh;
+  overflow: hidden;
 }
 
 /*
@@ -79,11 +81,14 @@ body {
 
 html {
   overscroll-behavior: none;
+  touch-action: none;
 }
 
 body {
   margin: 0;
-  min-height: 100dvh;
+  position: fixed;
+  inset: 0;
+  width: 100%;
   overscroll-behavior: none;
   font-family: var(--font-sans);
   font-size: var(--type-body);
@@ -97,7 +102,8 @@ body {
 #root {
   position: relative;
   z-index: 1;
-  min-height: 100dvh;
+  height: 100%;
+  overflow: hidden;
 }
 
 button,
@@ -168,11 +174,12 @@ h2,
 
 .screen {
   position: relative;
-  height: 100dvh;
-  min-height: 100dvh;
+  height: 100%;
+  max-height: 100dvh;
   display: flex;
   justify-content: center;
   overflow: hidden;
+  overscroll-behavior: none;
   background: var(--white);
 }
 
@@ -183,13 +190,22 @@ h2,
 */
 html.ios-safari {
   --safari-scroll-offset: 62px;
+  height: auto;
+  max-height: none;
   overflow-y: scroll;
   overscroll-behavior: none;
   background: var(--white);
 }
 
-html.ios-safari body {
+html.ios-safari body,
+html.ios-safari #root {
+  position: static;
+  inset: auto;
+  width: auto;
+  height: auto;
+  max-height: none;
   min-height: calc(100dvh + var(--safari-scroll-offset));
+  overflow: visible;
   background: var(--white);
 }
 
@@ -245,22 +261,6 @@ html.ios-safari .screen {
 .primary-button:active,
 .next-button:active {
   transform: scale(0.98);
-}
-
-.ghost-button {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: transparent;
-  color: var(--deep-blue);
-  border: 0;
-  display: grid;
-  place-items: center;
-}
-
-.ghost-button svg {
-  width: 22px;
-  height: 22px;
 }
 
 @media (prefers-reduced-motion: reduce) {
