@@ -38,12 +38,19 @@
         window.addEventListener("load", pin)
         window.__pinSafariStatusBar = pin
       })()
+
+      document.addEventListener("wheel", function (event) {
+        event.preventDefault()
+      }, { passive: false })
+      document.addEventListener("touchmove", function (event) {
+        if (event.cancelable) event.preventDefault()
+      }, { passive: false })
     </script>
-    <style>html.ios-safari{--safari-scroll-offset:62px;overscroll-behavior:none;background:#fff;overflow-y:scroll}html.ios-safari body{min-height:calc(100dvh + var(--safari-scroll-offset));background:#fff}html.ios-safari .screen{margin-top:var(--safari-scroll-offset)}</style>
+    <style>html,body{overscroll-behavior:none;background:#fff;height:100%;overflow:hidden}body{width:100%;margin:0;position:fixed;inset:0}html.ios-safari{--safari-scroll-offset:62px;overscroll-behavior:none;background:#fff;height:auto;overflow-y:scroll}html.ios-safari body{width:auto;height:auto;min-height:calc(100dvh + var(--safari-scroll-offset));background:#fff;position:static;inset:auto;overflow:visible}html.ios-safari .screen{margin-top:var(--safari-scroll-offset)}</style>
     <link rel="icon" href="/IsaRedFlags/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/IsaRedFlags/brand/logo-symbol.svg" />
-    <script type="module" crossorigin src="/IsaRedFlags/assets/index-CTfkzvzK.js"></script>
-    <link rel="stylesheet" crossorigin href="/IsaRedFlags/assets/index-BeUEp0Hb.css">
+    <script type="module" crossorigin src="/IsaRedFlags/assets/index-DPlAGF2z.js"></script>
+    <link rel="stylesheet" crossorigin href="/IsaRedFlags/assets/index-DFphmGVq.css">
   </head>
   <body>
     <div id="root"></div>
