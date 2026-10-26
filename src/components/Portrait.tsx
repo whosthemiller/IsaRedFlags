@@ -3,6 +3,7 @@ import { faceCropFor, portraitFocusStyle } from "../content/faceCrops"
 import { uiCopy } from "../content/uiCopy"
 import type { Profile } from "../types/content"
 import { profileImageSrc } from "../utils/game"
+import { publicUrl } from "../utils/publicUrl"
 
 const LOOKS = [
   { bg: "#5cc8ed", fg: "#00113f" },
@@ -69,7 +70,7 @@ export function Portrait({ profile }: { profile: Profile }) {
     <div className="portrait">
       <div className="portrait-placeholder" style={{ background: look.bg, color: look.fg }}>
         <span className="portrait-badge">
-          <img src={icon} alt="" draggable={false} />
+          <img src={publicUrl(icon)} alt="" draggable={false} />
         </span>
         <span className="portrait-initial" aria-hidden="true">
           {initial}

@@ -13,6 +13,7 @@ import type {
   ProfilePools,
   RoundState,
 } from "../types/content"
+import { publicUrl } from "./publicUrl"
 import { shuffle } from "./shuffle"
 
 const NEAREST: Record<Difficulty, Difficulty[]> = {
@@ -203,6 +204,7 @@ export function advance(state: RoundState): RoundState {
 
 export function profileImageSrc(image: string | null): string | null {
   if (!image) return null
-  if (/^(https?:|data:|blob:)/.test(image) || image.startsWith("/")) return image
-  return `/profiles/${image}`
+  if (/^(https?:|data:|blob:)/.test(image)) return image
+  if (image.startsWith("/")) return publicUrl(image)
+  return publicUrl(`profiles/${image}`)
 }
