@@ -10,12 +10,45 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
     <title>השקעה ממבט ראשון</title>
+    <script>
+      ;(function () {
+        var iOS =
+          /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+          (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+        if (!iOS) return
+        document.documentElement.classList.add("ios-safari")
+
+        function offset() {
+          var raw = getComputedStyle(document.documentElement).getPropertyValue("--safari-scroll-offset")
+          var value = parseFloat(raw)
+          return Number.isFinite(value) ? value : 0
+        }
+
+        function pin() {
+          var top = offset()
+          if (top <= 0) return
+          if (Math.abs(window.scrollY - top) > 1) window.scrollTo(0, top)
+        }
+
+        window.addEventListener("scroll", pin, { passive: true })
+        window.addEventListener("pageshow", pin)
+        window.addEventListener("resize", pin)
+        if (window.visualViewport) window.visualViewport.addEventListener("resize", pin)
+        document.addEventListener("DOMContentLoaded", pin)
+        window.addEventListener("load", pin)
+        window.__pinSafariStatusBar = pin
+      })()
+    </script>
+    <style>html.ios-safari{--safari-scroll-offset:62px;overscroll-behavior:none;background:#fff;overflow-y:scroll}html.ios-safari body{min-height:calc(100dvh + var(--safari-scroll-offset));background:#fff}html.ios-safari .screen{margin-top:var(--safari-scroll-offset)}</style>
     <link rel="icon" href="/IsaRedFlags/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/IsaRedFlags/brand/logo-symbol.svg" />
-    <script type="module" crossorigin src="/IsaRedFlags/assets/index-C6Z05bK2.js"></script>
-    <link rel="stylesheet" crossorigin href="/IsaRedFlags/assets/index-BckqgBH5.css">
+    <script type="module" crossorigin src="/IsaRedFlags/assets/index-piernHNY.js"></script>
+    <link rel="stylesheet" crossorigin href="/IsaRedFlags/assets/index-D6nrMBFz.css">
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      if (window.__pinSafariStatusBar) window.__pinSafariStatusBar()
+    </script>
   </body>
 </html>
