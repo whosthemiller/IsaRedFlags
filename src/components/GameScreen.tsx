@@ -104,26 +104,24 @@ export function GameScreen({ round, onDecide, onNext }: GameScreenProps) {
                 <button
                   type="button"
                   className="action"
-                  dir="rtl"
+                  aria-label={uiCopy.pass}
                   aria-keyshortcuts="ArrowLeft"
                   onClick={() => onDecide("left")}
                 >
                   <span className="orb orb-nope">
                     <IconNope />
                   </span>
-                  <span className="action-label">{uiCopy.pass}</span>
                 </button>
                 <button
                   type="button"
                   className="action"
-                  dir="rtl"
+                  aria-label={uiCopy.like}
                   aria-keyshortcuts="ArrowRight"
                   onClick={() => onDecide("right")}
                 >
                   <span className="orb orb-like">
                     <IconHeart />
                   </span>
-                  <span className="action-label">{uiCopy.like}</span>
                 </button>
               </div>
             </>

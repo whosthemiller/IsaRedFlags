@@ -39,7 +39,9 @@
   actions, stamps, and result panels.
   Green fills use the brand green. The palette has no separate red:
   red-flag fills use the brand orange. A correct answer is always green,
-  including a correctly spotted red flag. Stamp lettering stays a darker
+  including a correctly spotted red flag, on a visible green wash.
+  A miss is always the brand orange, on a visible orange wash, whether
+  the card was a red flag or a green flag. Stamp lettering stays a darker
   shade of the orange so it stays readable on white.
   The like heart, swipe wash, and like stamp all use --green.
   The pass mark, swipe wash, and pass stamp border all use --orange.
@@ -63,11 +65,9 @@
 
   --ink-red: #803f34;
   --ink-green: #087255;
-  --ink-miss: #803f34;
-  --ink-soft: #5b3cc4;
-  --tint-red: #fff0ed;
-  --tint-green: #f1fdf8;
-  --tint-lavender: #f3f1ff;
+  --ink-miss: #d14e38;
+  --tint-red: #ffddd6;
+  --tint-green: #d8fbf4;
 
   --space-1: 8px;
   --space-2: 16px;

@@ -15,7 +15,7 @@ type ProfileCardProps = {
 
 export function ProfileCard({ profile, enabled, onCommit }: ProfileCardProps) {
   const reducedMotion = useReducedMotion()
-  const { drag, handlers } = useSwipe({ enabled, reducedMotion, onCommit })
+  const { drag, cardRef, handlers } = useSwipe({ enabled, reducedMotion, onCommit })
   const rotate = Math.max(-12, Math.min(12, drag.x / 18))
   const passOpacity = drag.dragging && drag.x < 0 ? Math.min(1, Math.abs(drag.x) / 90) : 0
   const likeOpacity = drag.dragging && drag.x > 0 ? Math.min(1, drag.x / 90) : 0
@@ -23,6 +23,7 @@ export function ProfileCard({ profile, enabled, onCommit }: ProfileCardProps) {
 
   return (
     <article
+      ref={cardRef}
       className={`card card-front ${drag.dragging ? "is-dragging" : ""} ${drag.settling ? "is-settling" : ""} ${lean}`}
       aria-labelledby={`name-${profile.id}`}
       style={{
