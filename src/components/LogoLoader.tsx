@@ -1,3 +1,9 @@
+/** One pulse of a bar. The stylesheet reads this from `--logo-wave`. */
+export const LOGO_WAVE_MS = 1700
+
+/** How many times the wave must cross the whole mark before the app can open. */
+export const MIN_LOGO_LOOPS = 2
+
 const bars: { dir: "up" | "down"; delay: string; fill: string; d: string }[] = [
   { dir: "down", delay: "0.213s", fill: "#5cc8ed", d: "M53.05,108.77v3.98c0,2.4-3.88,2.35-3.88,0v-3.98c0-2.73,3.84-2.76,3.88,0Z" },
   { dir: "down", delay: "0.291s", fill: "#5cc8ed", d: "M72.43,108.77v14.5c0,2.4-3.88,2.35-3.88,0v-14.5c0-2.73,3.84-2.76,3.88,0Z" },
@@ -27,9 +33,20 @@ const bars: { dir: "up" | "down"; delay: string; fill: string; d: string }[] = [
   { dir: "up", delay: "0.407s", fill: "#3781ff", d: "M101.35,149.26c0,2.73-3.84,2.76-3.88,0V29.44c0-2.4,3.88-2.35,3.88,0" },
 ]
 
+/** Time until every bar has finished the minimum number of pulses. */
+export function minimumLogoLoadingMs(): number {
+  const span = Math.max(...bars.map((bar) => Number.parseFloat(bar.delay) * 1000))
+  return span + MIN_LOGO_LOOPS * LOGO_WAVE_MS
+}
+
 export function LogoLoader() {
   return (
-    <div className="logo-loader" role="img" aria-label="הלוגו של הרשות לניירות ערך נטען">
+    <div
+      className="logo-loader"
+      style={{ ["--logo-wave" as string]: `${LOGO_WAVE_MS}ms` }}
+      role="img"
+      aria-label="הלוגו של הרשות לניירות ערך נטען"
+    >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286.84 258.03" aria-hidden="true">
         {bars.map((bar) => (
           <path

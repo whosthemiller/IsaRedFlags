@@ -46,7 +46,7 @@
 .logo-loader .bar {
   transform-box: view-box;
   transform: scaleY(0);
-  animation: logo-wave 1.7s ease-in-out infinite;
+  animation: logo-wave var(--logo-wave, 1.7s) ease-in-out infinite;
 }
 
 .logo-loader .up {

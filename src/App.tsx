@@ -6,6 +6,7 @@ import { ContentError } from "./components/ContentError"
 import { EndScreen } from "./components/EndScreen"
 import { GameScreen } from "./components/GameScreen"
 import { LoadingScreen } from "./components/LoadingScreen"
+import { minimumLogoLoadingMs } from "./components/LogoLoader"
 import { StartScreen } from "./components/StartScreen"
 import type { Direction, RoundState } from "./types/content"
 import { advance, applyAnswer, createRound, profileImageSrc } from "./utils/game"
@@ -28,6 +29,20 @@ function useImagesReady(sources: readonly string[]): boolean {
   return readyKey === key
 }
 
+function useMinimumLoadingTime(ms: number): boolean {
+  const reduced =
+    typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  const [done, setDone] = useState(reduced || ms <= 0)
+
+  useEffect(() => {
+    if (reduced || ms <= 0) return
+    const id = window.setTimeout(() => setDone(true), ms)
+    return () => window.clearTimeout(id)
+  }, [ms, reduced])
+
+  return done
+}
+
 export function App() {
   const loaded = useMemo(() => loadGameContent(), [])
   const imageSources = useMemo(() => {
@@ -38,6 +53,7 @@ export function App() {
     })
   }, [loaded])
   const imagesReady = useImagesReady(imageSources)
+  const minimumTimeDone = useMinimumLoadingTime(minimumLogoLoadingMs())
   const [round, setRound] = useState<RoundState | null>(null)
   const banks = loaded.ok ? loaded.content.feedback : null
 
@@ -74,7 +90,7 @@ export function App() {
   }, [loaded])
 
   if (!loaded.ok) return <ContentError errors={loaded.errors} />
-  if (!imagesReady) return <LoadingScreen />
+  if (!imagesReady || !minimumTimeDone) return <LoadingScreen />
   if (!round) return <StartScreen onStart={onStart} />
   if (round.phase === "end") return <EndScreen round={round} onRestart={() => setRound(null)} />
   return <GameScreen round={round} onDecide={onDecide} onNext={onNext} />
