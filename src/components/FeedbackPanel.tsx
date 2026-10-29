@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react"
 import { uiCopy } from "../content/uiCopy"
 import type { Outcome, Profile } from "../types/content"
+import { IconFlag } from "./icons"
 
 type FeedbackPanelProps = {
   profile: Profile
@@ -28,7 +29,10 @@ export function FeedbackPanel({ profile, outcome, line }: FeedbackPanelProps) {
       <p className="feedback-kicker">{kicker}</p>
       {correct ? <p className="punch prose">{line}</p> : null}
       <div className="explanation-block">
-        <p className={`explanation-label explanation-label-${profile.flag}`}>{flagLabel}</p>
+        <p className={`explanation-label explanation-label-${profile.flag}`}>
+          <IconFlag className="explanation-flag" />
+          <span>{flagLabel}</span>
+        </p>
         <p className="explanation prose">{profile.explanation}</p>
       </div>
     </section>

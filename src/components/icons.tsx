@@ -27,9 +27,12 @@ export function IconHeart({ className }: IconProps) {
 
 export function IconFlag({ className }: IconProps) {
   return (
-    <svg className={className} viewBox="0 0 24 24" aria-hidden="true">
-      <path fill="currentColor" d="M6 3h2v18H6z" />
-      <path fill="currentColor" d="M8 4h11l-2.4 4.2L19 12.5H8z" />
+    <svg className={className} viewBox="0 0 48 46" aria-hidden="true">
+      <path
+        fill="currentColor"
+        d="M6.4 3.2c-1.35 0-2.4 1.05-2.4 2.4v34.8c0 1.35 1.05 2.4 2.4 2.4s2.4-1.05 2.4-2.4V5.6c0-1.35-1.05-2.4-2.4-2.4z"
+      />
+      <path fill="currentColor" d="M8.2 8h27.4L26.8 20.2 35.6 32.4H8.2z" />
     </svg>
   )
 }

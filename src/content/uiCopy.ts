@@ -56,7 +56,7 @@ const lowEndResult: EndResult = {
 const highEndResult: EndResult = {
   title: {
     lead: "יש לך רדאר.",
-    rest: "עכשיו להשתמש בו גם מחוץ לאפליקציה",
+    rest: "עכשיו הגיע הזמן להשתמש בו גם מחוץ לאפליקציה",
   },
   description: {
     lead: "זיהית לא מעט סימנים חשובים.",

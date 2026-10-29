@@ -18,7 +18,7 @@ describe("end result copy", () => {
       const result = endResultForScore(score)
       expect(result.title).toEqual({
         lead: "יש לך רדאר.",
-        rest: "עכשיו להשתמש בו גם מחוץ לאפליקציה",
+        rest: "עכשיו הגיע הזמן להשתמש בו גם מחוץ לאפליקציה",
       })
       expect(result.description).toEqual({
         lead: "זיהית לא מעט סימנים חשובים.",
