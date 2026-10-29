@@ -6,11 +6,12 @@ import { Logo } from "./Logo"
 
 type StartScreenProps = {
   onStart: () => void
+  inert?: boolean
 }
 
-export function StartScreen({ onStart }: StartScreenProps) {
+export function StartScreen({ onStart, inert = false }: StartScreenProps) {
   return (
-    <div className="screen start-screen">
+    <div className="screen start-screen" inert={inert || undefined} aria-hidden={inert || undefined}>
       <div className="app-frame">
         <header className="app-bar">
           <Logo />

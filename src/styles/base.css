@@ -3,7 +3,7 @@
   src: url("../../public/fonts/SimplerPro-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   src: url("../../public/fonts/SimplerPro-Bold.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -19,7 +19,7 @@
   src: url("../../public/fonts/SimplerPro-RegularItalic.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -27,7 +27,7 @@
   src: url("../../public/fonts/SimplerProExtended-Bold.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
 }
 
 @font-face {
@@ -235,6 +235,7 @@ html.ios-safari .screen {
 .logo {
   width: clamp(168px, 22vw, 240px);
   height: auto;
+  aspect-ratio: 494.87 / 264.98;
 }
 
 .logo-large {

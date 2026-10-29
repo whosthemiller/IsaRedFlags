@@ -1,9 +1,12 @@
 import { StrictMode } from "react"
 import { createRoot } from "react-dom/client"
 import { isReviewPath } from "./review/isReviewPath"
+import { whenFontsReady } from "./utils/preloadFonts"
 import "./styles/tokens.css"
 import "./styles/base.css"
 import "./styles/screens.css"
+
+void whenFontsReady()
 
 const root = document.getElementById("root")
 if (!root) throw new Error("Missing #root")

@@ -7,6 +7,8 @@ export function Logo({ large = false }: LogoProps) {
     <img
       className={large ? "logo logo-large" : "logo"}
       src={publicUrl("brand/logo-color-type.svg")}
+      width={495}
+      height={265}
       alt="הרשות לניירות ערך"
     />
   )

@@ -10,7 +10,9 @@ import { minimumLogoLoadingMs } from "./components/LogoLoader"
 import { StartScreen } from "./components/StartScreen"
 import type { Direction, RoundState } from "./types/content"
 import { advance, applyAnswer, createRound, profileImageSrc } from "./utils/game"
+import { whenFontsReady } from "./utils/preloadFonts"
 import { whenImagesReady } from "./utils/preloadImages"
+import { publicUrl } from "./utils/publicUrl"
 
 function useImagesReady(sources: readonly string[]): boolean {
   const key = sources.join("\0")
@@ -27,6 +29,71 @@ function useImagesReady(sources: readonly string[]): boolean {
   }, [sources, key])
 
   return readyKey === key
+}
+
+function useFontsReady(): boolean {
+  const [ready, setReady] = useState(false)
+
+  useLayoutEffect(() => {
+    let cancelled = false
+    void whenFontsReady().then(() => {
+      if (!cancelled) setReady(true)
+    })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  return ready
+}
+
+/** Boxes that jump when fonts, the logo, or container sizes settle. */
+const LAYOUT_PROBES = ".logo, .game-mark, .tagline, .intro-lead, .concept, .legend, .start-dock, .app-frame"
+
+function layoutSnapshot(): string {
+  const root = document.querySelector(".start-screen")
+  if (!root) return ""
+  return Array.from(root.querySelectorAll(LAYOUT_PROBES), (node) => {
+    const rect = node.getBoundingClientRect()
+    return `${Math.round(rect.x)}:${Math.round(rect.y)}:${Math.round(rect.width)}:${Math.round(rect.height)}`
+  }).join("|")
+}
+
+/** True once the start screen has kept the same geometry for a few frames. */
+function useSettledLayout(enabled: boolean): boolean {
+  const [settled, setSettled] = useState(false)
+
+  useEffect(() => {
+    if (!enabled || settled) return
+    let cancelled = false
+    let last = ""
+    let stable = 0
+    let frames = 0
+    let timer = 0
+
+    const finish = () => {
+      if (!cancelled) setSettled(true)
+    }
+
+    const step = () => {
+      if (cancelled) return
+      frames += 1
+      const next = layoutSnapshot()
+      if (next && next === last) stable += 1
+      else stable = 0
+      last = next
+      if ((stable >= 3 && next) || frames > 40) finish()
+      else timer = window.setTimeout(step, 32)
+    }
+
+    timer = window.setTimeout(step, 32)
+    return () => {
+      cancelled = true
+      window.clearTimeout(timer)
+    }
+  }, [enabled, settled])
+
+  return settled
 }
 
 function useMinimumLoadingTime(ms: number): boolean {
@@ -46,14 +113,21 @@ function useMinimumLoadingTime(ms: number): boolean {
 export function App() {
   const loaded = useMemo(() => loadGameContent(), [])
   const imageSources = useMemo(() => {
-    if (!loaded.ok) return []
-    return loaded.content.profiles.flatMap((profile) => {
-      const src = profileImageSrc(profile.image)
-      return src ? [src] : []
-    })
+    const logo = publicUrl("brand/logo-color-type.svg")
+    if (!loaded.ok) return [logo]
+    return [
+      logo,
+      ...loaded.content.profiles.flatMap((profile) => {
+        const src = profileImageSrc(profile.image)
+        return src ? [src] : []
+      }),
+    ]
   }, [loaded])
   const imagesReady = useImagesReady(imageSources)
+  const fontsReady = useFontsReady()
   const minimumTimeDone = useMinimumLoadingTime(minimumLogoLoadingMs())
+  const assetsReady = loaded.ok && imagesReady && fontsReady && minimumTimeDone
+  const settled = useSettledLayout(assetsReady)
   const [round, setRound] = useState<RoundState | null>(null)
   const banks = loaded.ok ? loaded.content.feedback : null
 
@@ -90,8 +164,16 @@ export function App() {
   }, [loaded])
 
   if (!loaded.ok) return <ContentError errors={loaded.errors} />
-  if (!imagesReady || !minimumTimeDone) return <LoadingScreen />
-  if (!round) return <StartScreen onStart={onStart} />
-  if (round.phase === "end") return <EndScreen round={round} onRestart={() => setRound(null)} />
-  return <GameScreen round={round} onDecide={onDecide} onNext={onNext} />
+
+  const booting = !round && !settled
+  return (
+    <>
+      {!round ? <StartScreen onStart={onStart} inert={booting} /> : null}
+      {round?.phase === "end" ? <EndScreen round={round} onRestart={() => setRound(null)} /> : null}
+      {round && round.phase !== "end" ? (
+        <GameScreen round={round} onDecide={onDecide} onNext={onNext} />
+      ) : null}
+      {booting ? <LoadingScreen /> : null}
+    </>
+  )
 }
