@@ -1,10 +1,11 @@
 import { uiCopy } from "../content/uiCopy"
+import { AppFrame } from "./AppFrame"
 import { Logo } from "./Logo"
 
 export function ContentError({ errors }: { errors: string[] }) {
   return (
     <div className="screen start-screen">
-      <div className="app-frame">
+      <AppFrame watch={errors.length}>
         <header className="app-bar">
           <Logo />
         </header>
@@ -18,7 +19,7 @@ export function ContentError({ errors }: { errors: string[] }) {
             </ul>
           ) : null}
         </div>
-      </div>
+      </AppFrame>
     </div>
   )
 }

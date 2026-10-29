@@ -12,6 +12,15 @@
   padding-bottom: env(safe-area-inset-bottom);
 }
 
+.fit-target {
+  flex: 0 0 auto;
+  width: 100%;
+  min-height: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 .app-bar {
   flex: 0 0 auto;
   display: grid;
@@ -165,9 +174,9 @@ html.ios-safari .screen.loading-screen {
 
 .start-body,
 .end-body {
-  flex: 1;
-  min-height: 0;
-  overflow: clip;
+  flex: 1 0 auto;
+  min-height: min-content;
+  overflow: visible;
   overscroll-behavior: none;
   padding: 12px 22px 8px;
 }
@@ -262,6 +271,7 @@ html.ios-safari .screen.loading-screen {
 .game-mark-word,
 .game-mark-sub {
   white-space: nowrap;
+  overflow: visible;
 }
 
 .game-mark-word {
@@ -269,7 +279,7 @@ html.ios-safari .screen.loading-screen {
   font-family: "Simpler Ext Bold", var(--font-sans);
   font-weight: 400;
   font-size: 58px;
-  line-height: 0.9;
+  line-height: 1;
   letter-spacing: -0.045em;
   color: var(--primary-blue);
 }
@@ -347,8 +357,8 @@ html.ios-safari .screen.loading-screen {
 }
 
 .orb {
-  width: 66px;
-  height: 66px;
+  width: 59px;
+  height: 59px;
   border-radius: 50%;
   background: var(--white);
   box-shadow: 0 8px 18px rgba(17, 24, 39, 0.12);
@@ -359,8 +369,8 @@ html.ios-safari .screen.loading-screen {
 }
 
 .orb svg {
-  width: 32px;
-  height: 32px;
+  width: 29px;
+  height: 29px;
 }
 
 .orb-nope {
@@ -384,12 +394,14 @@ html.ios-safari .screen.loading-screen {
   font-size: 0.95rem;
   font-weight: 700;
   line-height: 1.2;
+  max-width: 100%;
 }
 
 .action-meta {
   font-size: 0.75rem;
   color: #6b7280;
   line-height: 1.3;
+  max-width: 100%;
 }
 
 .end-screen .end-body {
@@ -400,11 +412,27 @@ html.ios-safari .screen.loading-screen {
   align-items: center;
   text-align: center;
   gap: clamp(16px, 3.2vh, 32px);
-  overflow: clip;
+  overflow: visible;
 }
 
 .end-screen .end-body h1 {
   color: var(--primary-blue);
+}
+
+.end-screen .end-lead,
+.end-screen .end-rest {
+  display: block;
+}
+
+.end-screen .end-lead {
+  font-weight: 700;
+}
+
+.end-screen .end-body h1 .end-rest,
+.end-screen .closing .end-rest {
+  margin-top: 0.35em;
+  font-weight: 400;
+  color: var(--deep-blue);
 }
 
 .end-medal {
@@ -591,8 +619,10 @@ html.ios-safari .screen.loading-screen {
 
 .stage {
   position: relative;
-  flex: 1;
-  min-height: 0;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: min-content;
   padding: 4px 10px 0;
 }
 
@@ -603,7 +633,11 @@ html.ios-safari .screen.loading-screen {
 
 .deck {
   position: relative;
-  height: 100%;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  min-height: min-content;
 }
 
 .card {
@@ -616,9 +650,11 @@ html.ios-safari .screen.loading-screen {
 }
 
 .card-front {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  inset: auto;
   z-index: 1;
+  flex: 1 0 auto;
+  width: 100%;
   display: flex;
   flex-direction: column;
   touch-action: none;
@@ -626,7 +662,7 @@ html.ios-safari .screen.loading-screen {
 }
 
 .has-back .card-front {
-  bottom: 12px;
+  margin-bottom: 12px;
 }
 
 .card-back {
@@ -652,8 +688,8 @@ html.ios-safari .screen.loading-screen {
 
 .card-hero {
   position: relative;
-  flex: 1 0 188px;
-  min-height: 188px;
+  flex: 1 1 188px;
+  min-height: 112px;
 }
 
 .portrait {
@@ -744,6 +780,7 @@ html.ios-safari .screen.loading-screen {
 }
 
 .card-body {
+  flex: 0 0 auto;
   padding: 16px 16px 20px;
   display: grid;
   gap: 14px;
@@ -895,13 +932,15 @@ html.ios-safari .screen.loading-screen {
 }
 
 .feedback {
-  height: 100%;
+  flex: 1 0 auto;
+  height: auto;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: safe center;
   align-items: center;
   gap: 18px;
-  overflow: clip;
+  overflow: visible;
   overscroll-behavior: none;
   padding: 48px 28px;
   text-align: center;
@@ -1093,13 +1132,13 @@ html.ios-safari .screen.loading-screen {
   }
 
   .orb {
-    width: 78px;
-    height: 78px;
+    width: 70px;
+    height: 70px;
   }
 
   .orb svg {
-    width: 36px;
-    height: 36px;
+    width: 32px;
+    height: 32px;
   }
 
   .actions {
@@ -1148,7 +1187,7 @@ html.ios-safari .screen.loading-screen {
 }
 
 .start-screen .start-body {
-  flex: 1 1 auto;
+  flex: 1 0 auto;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -1170,10 +1209,10 @@ html.ios-safari .screen.loading-screen {
 }
 
 .start-screen .game-mark {
-  --mark: clamp(0.96, calc(100cqh / 760px), 1.22);
+  --mark: clamp(0.72, calc(100cqh / 760px), 1.22);
   transform: scale(var(--mark));
   transform-origin: center center;
-  margin-block: calc((var(--mark) - 1) * 72px);
+  margin-block: calc((var(--mark) - 1) * 96px);
 }
 
 .start-screen .tagline {
@@ -1208,15 +1247,23 @@ html.ios-safari .screen.loading-screen {
 }
 
 .start-screen .legend {
-  width: auto;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
   justify-content: center;
-  gap: 56px;
+  gap: clamp(12px, 4vw, 56px);
+}
+
+.start-screen .legend-item {
+  width: auto;
+  flex: 0 1 148px;
+  min-width: 0;
+  max-width: calc(50% - 8px);
 }
 
 .start-screen .orb {
-  width: clamp(52px, 8.5cqh, 96px);
-  height: clamp(52px, 8.5cqh, 96px);
+  width: clamp(47px, 7.65cqh, 86px);
+  height: clamp(47px, 7.65cqh, 86px);
 }
 
 .start-screen .orb svg {
@@ -1265,7 +1312,7 @@ html.ios-safari .screen.loading-screen {
   .start-screen .start-body,
   .end-screen .end-body,
   .feedback {
-    overflow: clip;
+    overflow: visible;
   }
 
   .feedback {
@@ -1279,8 +1326,8 @@ html.ios-safari .screen.loading-screen {
   }
 
   .start-screen .game-mark {
-    --mark: clamp(1, calc(100cqh / 720px), 1.22);
-    margin-block: calc((var(--mark) - 1) * 72px);
+    --mark: clamp(0.7, calc(100cqh / 820px), 1);
+    margin-block: calc((var(--mark) - 1) * 96px);
   }
 
   .game-mark-cards {
@@ -1309,8 +1356,8 @@ html.ios-safari .screen.loading-screen {
   }
 
   .start-screen .start-body {
-    flex: 1 1 auto;
-    min-height: 0;
+    flex: 1 0 auto;
+    min-height: min-content;
     justify-content: space-evenly;
     gap: clamp(10px, 2.2cqh, 24px);
     margin-top: 0;
@@ -1354,8 +1401,8 @@ html.ios-safari .screen.loading-screen {
   }
 
   .start-screen .orb {
-    width: clamp(54px, 8cqh, 70px);
-    height: clamp(54px, 8cqh, 70px);
+    width: clamp(49px, 7.2cqh, 63px);
+    height: clamp(49px, 7.2cqh, 63px);
   }
 
   .start-screen .primary-button,
@@ -1421,8 +1468,8 @@ html.ios-safari .screen.loading-screen {
   }
 
   .start-screen .orb {
-    width: 104px;
-    height: 104px;
+    width: 94px;
+    height: 94px;
   }
 
   .start-screen .primary-button,
@@ -1432,9 +1479,9 @@ html.ios-safari .screen.loading-screen {
   }
 
   .start-screen .start-body {
-    flex: 1 1 auto;
-    min-height: 0;
-    overflow: clip;
+    flex: 1 0 auto;
+    min-height: min-content;
+    overflow: visible;
     margin-top: 0;
     justify-content: space-evenly;
     gap: 24px;
@@ -1463,18 +1510,18 @@ html.ios-safari .screen.loading-screen {
 
 @media (max-height: 700px) {
   .card-hero {
-    flex-basis: 150px;
-    min-height: 150px;
+    flex-basis: 140px;
+    min-height: 96px;
   }
 
   .orb {
-    width: 56px;
-    height: 56px;
+    width: 50px;
+    height: 50px;
   }
 
   .orb svg {
-    width: 26px;
-    height: 26px;
+    width: 23px;
+    height: 23px;
   }
 
   .app-bar {
@@ -1509,7 +1556,7 @@ html.ios-safari .screen.loading-screen {
   }
 
   .end-screen .end-body {
-    flex: 1 1 auto;
+    flex: 1 0 auto;
     justify-content: space-evenly;
     gap: 20px;
     padding-block: 4px 8px;

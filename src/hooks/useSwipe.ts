@@ -11,6 +11,17 @@ export interface DragState {
 const REST: DragState = { x: 0, y: 0, dragging: false, settling: false }
 const THRESHOLD = 88
 
+function visualZoom(node: HTMLElement): number {
+  const scaled = node.closest<HTMLElement>(".fit-target")
+  if (!scaled) return 1
+  const transform = getComputedStyle(scaled).transform
+  if (!transform || transform === "none") return 1
+  const matrix = /^matrix\(([^)]+)\)/.exec(transform)
+  if (!matrix) return 1
+  const scale = Number.parseFloat(matrix[1].split(",")[0] ?? "")
+  return Number.isFinite(scale) && scale > 0 ? scale : 1
+}
+
 export function useSwipe({
   enabled,
   reducedMotion,
@@ -78,7 +89,8 @@ export function useSwipe({
     }
     if (start.blocked) return
     if (event.cancelable) event.preventDefault()
-    setDrag({ x: dx, y: dy * 0.08, dragging: true, settling: false })
+    const zoom = visualZoom(event.currentTarget)
+    setDrag({ x: dx / zoom, y: (dy * 0.08) / zoom, dragging: true, settling: false })
   }
 
   function finish(event: ReactPointerEvent<HTMLElement>) {

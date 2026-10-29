@@ -2,6 +2,7 @@ import { useEffect } from "react"
 import { uiCopy } from "../content/uiCopy"
 import type { Direction, RoundState } from "../types/content"
 import { outcomeOf } from "../utils/game"
+import { AppFrame } from "./AppFrame"
 import { Disclaimer } from "./Disclaimer"
 import { FeedbackPanel } from "./FeedbackPanel"
 import { IconHeart, IconNope } from "./icons"
@@ -44,7 +45,7 @@ export function GameScreen({ round, onDecide, onNext }: GameScreenProps) {
 
   return (
     <div className="screen game-screen">
-      <div className="app-frame">
+      <AppFrame watch={`${round.phase}:${round.index}:${round.feedbackLine ?? ""}:${profile.id}`}>
         <header className="app-bar">
           <Logo />
           <p
@@ -128,7 +129,7 @@ export function GameScreen({ round, onDecide, onNext }: GameScreenProps) {
           )}
           <Disclaimer />
         </footer>
-      </div>
+      </AppFrame>
     </div>
   )
 }

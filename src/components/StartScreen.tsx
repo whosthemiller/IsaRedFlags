@@ -1,4 +1,5 @@
 import { uiCopy } from "../content/uiCopy"
+import { AppFrame } from "./AppFrame"
 import { Disclaimer } from "./Disclaimer"
 import { GameMark } from "./GameMark"
 import { IconHeart, IconNope } from "./icons"
@@ -12,7 +13,7 @@ type StartScreenProps = {
 export function StartScreen({ onStart, inert = false }: StartScreenProps) {
   return (
     <div className="screen start-screen" inert={inert || undefined} aria-hidden={inert || undefined}>
-      <div className="app-frame">
+      <AppFrame>
         <header className="app-bar">
           <Logo />
           <span className="app-bar-gap" />
@@ -61,7 +62,7 @@ export function StartScreen({ onStart, inert = false }: StartScreenProps) {
           </button>
           <Disclaimer />
         </footer>
-      </div>
+      </AppFrame>
     </div>
   )
 }

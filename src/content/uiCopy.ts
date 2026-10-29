@@ -31,20 +31,37 @@ export const uiCopy = {
   progress: "התקדמות בסיבוב",
 } as const
 
+/** The lead is the emphasized clause. The rest continues the same sentence, quieter. */
+export interface EndLine {
+  lead: string
+  rest: string
+}
+
 export interface EndResult {
-  title: string
-  description: string
+  title: EndLine
+  description: EndLine
 }
 
 const lowEndResult: EndResult = {
-  title: "לא תמיד זו אהבה ממבט ראשון",
-  description:
-    "רושם ראשוני יכול להטעות. גם בהשקעות, שווה לתת לפרטים מבט נוסף, לשאול שאלות ולהכיר את הסיכונים.",
+  title: {
+    lead: "לא תמיד זו אהבה ממבט ראשון",
+    rest: "",
+  },
+  description: {
+    lead: "רושם ראשוני יכול להטעות.",
+    rest: "גם בהשקעות, שווה לתת לפרטים מבט נוסף, לשאול שאלות ולהכיר את הסיכונים.",
+  },
 }
 
 const highEndResult: EndResult = {
-  title: "יש לך רדאר. עכשיו להשתמש בו גם מחוץ לאפליקציה",
-  description: "זיהית לא מעט סימנים חשובים. גם במציאות, כדאי להמשיך לבדוק לפני שמתחייבים.",
+  title: {
+    lead: "יש לך רדאר.",
+    rest: "עכשיו להשתמש בו גם מחוץ לאפליקציה",
+  },
+  description: {
+    lead: "זיהית לא מעט סימנים חשובים.",
+    rest: "גם במציאות, כדאי להמשיך לבדוק לפני שמתחייבים.",
+  },
 }
 
 /** Scores 0–2 share one result. Scores 3 and above share the other. */

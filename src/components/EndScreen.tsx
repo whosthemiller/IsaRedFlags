@@ -1,6 +1,7 @@
 import { gameConfig } from "../config/gameConfig"
-import { endResultForScore, uiCopy } from "../content/uiCopy"
+import { endResultForScore, uiCopy, type EndLine } from "../content/uiCopy"
 import type { RoundState } from "../types/content"
+import { AppFrame } from "./AppFrame"
 import { Disclaimer } from "./Disclaimer"
 import { Logo } from "./Logo"
 import { Spark } from "./Spark"
@@ -10,17 +11,28 @@ type EndScreenProps = {
   onRestart: () => void
 }
 
+function RankedLine({ line }: { line: EndLine }) {
+  return (
+    <>
+      <span className="end-lead">{line.lead}</span>
+      {line.rest ? <span className="end-rest">{line.rest}</span> : null}
+    </>
+  )
+}
+
 export function EndScreen({ round, onRestart }: EndScreenProps) {
   const result = endResultForScore(round.correct)
   return (
     <div className="screen end-screen">
-      <div className="app-frame">
+      <AppFrame watch={`${round.correct}/${round.length}`}>
         <header className="app-bar">
           <Logo />
           <span className="app-bar-gap" />
         </header>
         <div className="end-body">
-          <h1 dir="rtl">{result.title}</h1>
+          <h1 dir="rtl">
+            <RankedLine line={result.title} />
+          </h1>
           <div className="end-medal">
               <Spark className="spark spark-a" />
               <Spark className="spark spark-b" />
@@ -34,7 +46,7 @@ export function EndScreen({ round, onRestart }: EndScreenProps) {
             </p>
           </div>
           <p className="closing prose" dir="rtl">
-            {result.description}
+            <RankedLine line={result.description} />
           </p>
         </div>
         <footer className="dock end-dock">
@@ -44,7 +56,7 @@ export function EndScreen({ round, onRestart }: EndScreenProps) {
           <Disclaimer />
         </footer>
         <p className="sr-only">{gameConfig.gameName}</p>
-      </div>
+      </AppFrame>
     </div>
   )
 }
