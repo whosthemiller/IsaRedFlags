@@ -191,6 +191,46 @@ describe("adaptive difficulty", () => {
     expect(state.correct).toBe(3)
   })
 
+  it("keeps difficulty order when two flags of each color are already possible", () => {
+    const cards = [
+      profile({ id: "e1", flag: "red", difficulty: "easy" }),
+      profile({ id: "m1", flag: "green", difficulty: "medium" }),
+      profile({ id: "h1", flag: "red", difficulty: "hard" }),
+      profile({ id: "h2", flag: "green", difficulty: "hard" }),
+      profile({ id: "h3", flag: "red", difficulty: "hard" }),
+    ]
+    let state = createRound(cards, { gameName: "בדיקה", shuffleProfiles: false, roundLength: 5 }, banks, () => 0)
+    const played: string[] = []
+    for (const swipe of ["left", "right", "left", "right", "left"] as const) {
+      played.push(state.profiles[state.index].id)
+      state = advance(applyAnswer(state, swipe, banks))
+    }
+    expect(played).toEqual(["e1", "m1", "h1", "h2", "h3"])
+    expect(countFlags(state.profiles)).toEqual({ red: 3, green: 2 })
+  })
+
+  it("skips a card that would leave the round with only one flag of a color", () => {
+    const cards = [
+      profile({ id: "e1", flag: "red", difficulty: "easy" }),
+      profile({ id: "e2", flag: "red", difficulty: "easy" }),
+      profile({ id: "e3", flag: "red", difficulty: "easy" }),
+      profile({ id: "e4", flag: "red", difficulty: "easy" }),
+      profile({ id: "m1", flag: "green", difficulty: "medium" }),
+      profile({ id: "m2", flag: "green", difficulty: "medium" }),
+      profile({ id: "h1", flag: "red", difficulty: "hard" }),
+    ]
+    let state = createRound(cards, { gameName: "בדיקה", shuffleProfiles: false, roundLength: 5 }, banks, () => 0)
+    const played: string[] = []
+    while (state.phase !== "end") {
+      const current = state.profiles[state.index]
+      played.push(current.id)
+      const wrong = current.flag === "red" ? "right" : "left"
+      state = advance(applyAnswer(state, wrong, banks))
+    }
+    expect(played).toEqual(["e1", "e2", "e3", "m1", "m2"])
+    expect(countFlags(state.profiles)).toEqual({ red: 3, green: 2 })
+  })
+
   it("falls back to the nearest difficulty that still has a card", () => {
     const cards = [
       profile({ id: "h1", flag: "red", difficulty: "hard" }),
@@ -309,4 +349,36 @@ describe("supplied content", () => {
     expect(loaded.content.taglines).toHaveLength(3)
     expect(loaded.content.feedback.end.length).toBeGreaterThan(0)
   })
+
+  it("deals at least two red and two green flags on every answer path", () => {
+    const loaded = loadGameContent()
+    expect(loaded.ok).toBe(true)
+    if (!loaded.ok) return
+    const config = { gameName: "בדיקה", shuffleProfiles: true, roundLength: 5 }
+    for (let seed = 1; seed <= 40; seed += 1) {
+      for (let path = 0; path < 32; path += 1) {
+        let state = createRound(loaded.content.profiles, config, loaded.content.feedback, rng(seed))
+        expect(state.profiles[0]?.difficulty).toBe("easy")
+        for (let step = 0; step < state.length; step += 1) {
+          const current = state.profiles[state.index]
+          const wantCorrect = ((path >> step) & 1) === 1
+          const direction = (current.flag === "red") === wantCorrect ? "left" : "right"
+          state = advance(applyAnswer(state, direction, loaded.content.feedback))
+        }
+        expect(state.phase).toBe("end")
+        expect(state.profiles).toHaveLength(5)
+        const counts = countFlags(state.profiles)
+        expect(counts.red).toBeGreaterThanOrEqual(2)
+        expect(counts.green).toBeGreaterThanOrEqual(2)
+      }
+    }
+  })
 })
+
+function rng(seed: number): () => number {
+  let state = seed >>> 0
+  return () => {
+    state = (Math.imul(state, 1664525) + 1013904223) >>> 0
+    return state / 4294967296
+  }
+}

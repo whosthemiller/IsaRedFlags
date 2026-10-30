@@ -3,6 +3,8 @@
  * A round is `roundLength` profiles. It always opens on easy, and each
  * correct answer raises the next card: one success → medium, two or more → hard.
  * A miss does not lower a level already reached.
+ * When the deck allows it, the round includes at least two red flags and two green flags.
+ * A card is skipped only when taking it would make that mix impossible.
  * Set shuffleProfiles to false to keep source order inside each difficulty.
  */
 export interface GameConfig {

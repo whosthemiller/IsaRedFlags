@@ -22,6 +22,19 @@ const NEAREST: Record<Difficulty, Difficulty[]> = {
   hard: ["hard", "medium", "easy"],
 }
 
+/** Every finished round keeps at least this many flags of each color, when the deck can supply them. */
+const MIN_FLAGS_PER_COLOR = 2
+
+interface FlagCounts {
+  red: number
+  green: number
+}
+
+interface FlagBalance {
+  shown: FlagCounts
+  slotsLeft: number
+}
+
 export function emptyPools(): ProfilePools {
   return { easy: [], medium: [], hard: [] }
 }
@@ -50,16 +63,72 @@ export function poolsFromProfiles(
   return pools
 }
 
-/** Draws the target difficulty, or the nearest level that still has a card. */
-export function drawProfile(
-  pools: ProfilePools,
-  target: Difficulty,
-): { profile: Profile | null; pools: ProfilePools } {
-  const next: ProfilePools = {
+function flagCounts(profiles: readonly Profile[]): FlagCounts {
+  const counts: FlagCounts = { red: 0, green: 0 }
+  for (const profile of profiles) counts[profile.flag] += 1
+  return counts
+}
+
+function copyPools(pools: ProfilePools): ProfilePools {
+  return {
     easy: pools.easy.slice(),
     medium: pools.medium.slice(),
     hard: pools.hard.slice(),
   }
+}
+
+function poolCounts(pools: ProfilePools): FlagCounts {
+  return flagCounts([...pools.easy, ...pools.medium, ...pools.hard])
+}
+
+/**
+ * True when the remaining slots can still be filled so the round has at least
+ * two red flags and two green flags.
+ */
+function canFinishWithBothColors(shown: FlagCounts, slotsLeft: number, available: FlagCounts): boolean {
+  const drawable = Math.min(Math.max(0, slotsLeft), available.red + available.green)
+  const minRed = Math.max(0, drawable - available.green)
+  const maxRed = Math.min(drawable, available.red)
+  for (let takeRed = minRed; takeRed <= maxRed; takeRed += 1) {
+    const red = shown.red + takeRed
+    const green = shown.green + (drawable - takeRed)
+    if (red >= MIN_FLAGS_PER_COLOR && green >= MIN_FLAGS_PER_COLOR) return true
+  }
+  return false
+}
+
+function removeAt(pools: ProfilePools, level: Difficulty, index: number): ProfilePools {
+  const next = copyPools(pools)
+  next[level] = next[level].filter((_, itemIndex) => itemIndex !== index)
+  return next
+}
+
+/** Draws the target difficulty, or the nearest level that still has a card. */
+export function drawProfile(
+  pools: ProfilePools,
+  target: Difficulty,
+  balance?: FlagBalance,
+): { profile: Profile | null; pools: ProfilePools } {
+  const available = poolCounts(pools)
+  if (balance && canFinishWithBothColors(balance.shown, balance.slotsLeft, available)) {
+    for (const level of NEAREST[target]) {
+      for (let index = 0; index < pools[level].length; index += 1) {
+        const profile = pools[level][index]
+        const shown = {
+          red: balance.shown.red + (profile.flag === "red" ? 1 : 0),
+          green: balance.shown.green + (profile.flag === "green" ? 1 : 0),
+        }
+        const rest = {
+          red: available.red - (profile.flag === "red" ? 1 : 0),
+          green: available.green - (profile.flag === "green" ? 1 : 0),
+        }
+        if (!canFinishWithBothColors(shown, balance.slotsLeft - 1, rest)) continue
+        return { profile, pools: removeAt(pools, level, index) }
+      }
+    }
+  }
+
+  const next = copyPools(pools)
   for (const level of NEAREST[target]) {
     const profile = next[level][0]
     if (!profile) continue
@@ -125,7 +194,11 @@ export function createRound(
   random: () => number = Math.random,
 ): RoundState {
   const length = resolveRoundLength(config.roundLength, profiles.length)
-  const opening = length > 0 ? drawProfile(poolsFromProfiles(profiles, config.shuffleProfiles, random), "easy") : null
+  const pools = length > 0 ? poolsFromProfiles(profiles, config.shuffleProfiles, random) : emptyPools()
+  const opening =
+    length > 0
+      ? drawProfile(pools, "easy", { shown: { red: 0, green: 0 }, slotsLeft: length })
+      : null
   const endIndex = banks.end.length === 0 ? 0 : Math.floor(random() * banks.end.length)
   return {
     profiles: opening?.profile ? [opening.profile] : [],
@@ -160,7 +233,10 @@ export function applyAnswer(
   let pools = state.pools
   let length = state.length
   if (answered < state.length) {
-    const drawn = drawProfile(pools, difficultyForScore(correctCount))
+    const drawn = drawProfile(pools, difficultyForScore(correctCount), {
+      shown: flagCounts(profiles),
+      slotsLeft: length - profiles.length,
+    })
     pools = drawn.pools
     if (drawn.profile) profiles = [...profiles, drawn.profile]
     else length = profiles.length
