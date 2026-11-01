@@ -56,9 +56,8 @@ export function StartScreen({ onStart, inert = false }: StartScreenProps) {
           </div>
         </div>
         <footer className="dock start-dock">
-          <p className="intro-cta prose">{uiCopy.introCta}</p>
           <button type="button" className="primary-button" onClick={onStart}>
-            {uiCopy.start}
+            {uiCopy.introCta}
           </button>
           <Disclaimer />
         </footer>

@@ -319,8 +319,7 @@ html.ios-safari .screen.loading-screen {
   white-space: nowrap;
 }
 
-.intro-lead,
-.intro-cta {
+.intro-lead {
   font-weight: 700;
   color: #16181d;
   font-size: 1.05rem;
@@ -428,9 +427,20 @@ html.ios-safari .screen.loading-screen {
   font-weight: 700;
 }
 
-.end-screen .end-body h1 .end-rest,
+.end-screen .end-body h1 .end-lead,
+.end-screen .end-body h1 .end-rest {
+  font-size: inherit;
+  letter-spacing: inherit;
+  color: inherit;
+}
+
+.end-screen .end-body h1 .end-rest {
+  margin-top: 0;
+  font-weight: 400;
+}
+
 .end-screen .closing .end-rest {
-  margin-top: 0.35em;
+  margin-top: 0;
   font-weight: 400;
   color: var(--deep-blue);
 }
@@ -1038,7 +1048,7 @@ html.ios-safari .screen.loading-screen {
   flex: 0 0 auto;
   display: grid;
   gap: 8px;
-  padding: 8px 16px 10px;
+  padding: 8px 16px 2px;
   container-type: inline-size;
 }
 
@@ -1124,7 +1134,7 @@ html.ios-safari .screen.loading-screen {
 
   .dock {
     padding-inline: 0;
-    padding-bottom: 16px;
+    padding-bottom: 8px;
   }
 
   .start-body {
@@ -1219,6 +1229,7 @@ html.ios-safari .screen.loading-screen {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: clamp(36px, 6.5cqh, 72px);
 }
 
 .start-screen .game-lockup {
@@ -1292,18 +1303,10 @@ html.ios-safari .screen.loading-screen {
   flex-shrink: 0;
   width: min(760px, calc(100% - 36px));
   margin-top: clamp(8px, 1.8cqh, 32px);
-  margin-bottom: clamp(8px, 1.2cqh, 16px);
+  margin-bottom: clamp(2px, 0.6cqh, 8px);
   margin-inline: auto;
   gap: 12px;
-  padding-bottom: 16px;
-}
-
-.start-screen .intro-cta {
-  font-size: clamp(1.25rem, 3.4cqh, 2.6rem);
-  line-height: 1.15;
-  letter-spacing: -0.03em;
-  color: var(--dark-blue);
-  text-align: center;
+  padding-bottom: 8px;
 }
 
 .start-screen .primary-button,
@@ -1405,11 +1408,7 @@ html.ios-safari .screen.loading-screen {
     gap: clamp(8px, 1.5cqh, 14px);
     margin-top: 0;
     margin-bottom: 0;
-    padding-bottom: 10px;
-  }
-
-  .start-screen .intro-cta {
-    font-size: clamp(1.22rem, 3.2cqh, 1.6rem);
+    padding-bottom: 2px;
   }
 
   .start-screen .legend {
@@ -1480,10 +1479,6 @@ html.ios-safari .screen.loading-screen {
     font-size: 1.5rem;
   }
 
-  .start-screen .intro-cta {
-    font-size: 2.55rem;
-  }
-
   .start-screen .orb {
     width: 94px;
     height: 94px;
@@ -1507,7 +1502,7 @@ html.ios-safari .screen.loading-screen {
   .start-screen .start-dock {
     flex-shrink: 0;
     margin-top: 12px;
-    margin-bottom: 16px;
+    margin-bottom: 8px;
   }
 }
 
@@ -1584,37 +1579,37 @@ html.ios-safari .screen.loading-screen {
   }
 
   .end-medal {
-    width: min(460px, 42vh);
+    width: min(380px, 34vh);
   }
 
   .end-score {
-    font-size: 5.5rem;
-    border-width: 10px;
-    box-shadow: 0 0 0 18px var(--bright-blue);
+    font-size: 4.6rem;
+    border-width: 8px;
+    box-shadow: 0 0 0 15px var(--bright-blue);
   }
 
   .end-medal .spark-a {
-    width: 58px;
+    width: 48px;
     left: -6%;
   }
 
   .end-medal .spark-b {
-    width: 36px;
+    width: 30px;
     right: -8%;
   }
 
   .end-medal .spark-c {
-    width: 46px;
+    width: 38px;
     left: -10%;
   }
 
   .end-medal .spark-d {
-    width: 30px;
+    width: 25px;
     right: -2%;
   }
 
   .end-medal .spark-e {
-    width: 26px;
+    width: 22px;
   }
 
   .end-screen .closing {
@@ -1625,7 +1620,7 @@ html.ios-safari .screen.loading-screen {
   .end-screen .end-dock {
     flex-shrink: 0;
     gap: 16px;
-    padding-bottom: 22px;
+    padding-bottom: 12px;
   }
 
   .end-screen .primary-button {
