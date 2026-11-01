@@ -1502,7 +1502,8 @@ html.ios-safari .screen.loading-screen {
   .start-screen .start-dock {
     flex-shrink: 0;
     margin-top: 12px;
-    margin-bottom: 8px;
+    margin-bottom: 0;
+    padding-bottom: 0;
   }
 }
 
@@ -1620,7 +1621,7 @@ html.ios-safari .screen.loading-screen {
   .end-screen .end-dock {
     flex-shrink: 0;
     gap: 16px;
-    padding-bottom: 12px;
+    padding-bottom: 0;
   }
 
   .end-screen .primary-button {
@@ -1633,5 +1634,23 @@ html.ios-safari .screen.loading-screen {
     font-size: min(0.95rem, calc(100cqi / 33.6));
     max-width: none;
     margin-inline: auto;
+  }
+}
+
+/*
+  iPad: the disclaimer sits on the glass. Dock padding no longer lifts it,
+  and the home-indicator inset is space the line can occupy, leaving a few
+  pixels above the bezel.
+*/
+@media (min-width: 768px) and (max-width: 1400px) and (max-height: 1400px) {
+  .start-screen .start-dock,
+  .game-screen .dock,
+  .end-screen .end-dock {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .disclaimer {
+    margin-bottom: calc(4px - env(safe-area-inset-bottom, 0px));
   }
 }
