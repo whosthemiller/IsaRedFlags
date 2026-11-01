@@ -17,7 +17,7 @@ describe("end result copy", () => {
     for (const score of [3, 4, 5]) {
       const result = endResultForScore(score)
       expect(result.title).toEqual({
-        lead: "יש לך רדאר.",
+        lead: "יש לך רדאר",
         rest: "עכשיו הגיע הזמן להשתמש בו גם מחוץ לאפליקציה",
       })
       expect(result.description).toEqual({

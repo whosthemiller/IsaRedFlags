@@ -762,7 +762,7 @@ html.ios-safari .screen.loading-screen {
 }
 
 .card-name {
-  font-size: clamp(1.7rem, 6vw, 2rem);
+  font-size: clamp(1.95rem, 6.8vw, 2.3rem);
   font-weight: 700;
   color: var(--white);
   letter-spacing: -0.03em;
@@ -776,7 +776,7 @@ html.ios-safari .screen.loading-screen {
   margin-top: 2px;
   color: rgba(255, 255, 255, 0.92);
   font-weight: 400;
-  font-size: 0.95rem;
+  font-size: 1.1rem;
 }
 
 .card-body {
@@ -788,14 +788,14 @@ html.ios-safari .screen.loading-screen {
 
 .section-label,
 .eyebrow {
-  font-size: 0.8rem;
+  font-size: 0.92rem;
   font-weight: 700;
   color: #6b7280;
   margin-bottom: 6px;
 }
 
 .about-copy {
-  font-size: 1rem;
+  font-size: 1.15rem;
 }
 
 .chat {
@@ -844,7 +844,7 @@ html.ios-safari .screen.loading-screen {
   border-radius: 16px;
   border-end-start-radius: 4px;
   padding: 10px 14px 12px;
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   font-weight: 700;
   line-height: 1.4;
 }
@@ -1159,15 +1159,19 @@ html.ios-safari .screen.loading-screen {
   }
 
   .card-name {
-    font-size: 2.2rem;
+    font-size: 2.5rem;
+  }
+
+  .card-tagline {
+    font-size: 1.22rem;
   }
 
   .about-copy {
-    font-size: 1.125rem;
+    font-size: 1.3rem;
   }
 
   .chat-bubble {
-    font-size: 1.2rem;
+    font-size: 1.38rem;
   }
 
   .primary-button,
@@ -1584,7 +1588,7 @@ html.ios-safari .screen.loading-screen {
   }
 
   .end-score {
-    font-size: 7rem;
+    font-size: 5.5rem;
     border-width: 10px;
     box-shadow: 0 0 0 18px var(--bright-blue);
   }
