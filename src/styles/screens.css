@@ -153,6 +153,28 @@ html.ios-safari .screen.loading-screen {
   gap: 2px;
 }
 
+.lang-toggle {
+  appearance: none;
+  border: 1px solid color-mix(in srgb, var(--deep-blue) 18%, transparent);
+  background: #f3f5f8;
+  color: var(--deep-blue);
+  border-radius: 999px;
+  min-width: 44px;
+  min-height: 32px;
+  padding: 4px 10px;
+  font-family: var(--font-sans);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lang-toggle:focus-visible {
+  outline: 2px solid var(--primary-blue);
+  outline-offset: 2px;
+}
+
 .score {
   display: flex;
   align-items: baseline;
@@ -264,6 +286,7 @@ html.ios-safari .screen.loading-screen {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 214px;
   margin-top: -46px;
   padding-top: 16px;
 }
@@ -290,8 +313,8 @@ html.ios-safari .screen.loading-screen {
   z-index: -1;
   left: 50%;
   top: 58%;
-  width: 112%;
-  height: 170%;
+  width: 210px;
+  height: 120px;
   transform: translate(-50%, -50%);
   background: radial-gradient(ellipse at center, #fff 0%, rgba(255, 255, 255, 0.92) 42%, transparent 74%);
   pointer-events: none;
@@ -307,6 +330,17 @@ html.ios-safari .screen.loading-screen {
   color: var(--deep-blue);
 }
 
+/* Keep the English wordmark inside the same visual footprint as Hebrew. */
+html[lang="en"] .game-mark-word {
+  font-size: 34px;
+  letter-spacing: -0.04em;
+}
+
+html[lang="en"] .game-mark-sub {
+  font-size: 22px;
+  letter-spacing: -0.035em;
+}
+
 .tagline {
   margin: 0;
   font-family: "Simpler Italic", var(--font-sans);
@@ -316,7 +350,8 @@ html.ios-safari .screen.loading-screen {
   line-height: 1.4;
   color: var(--deep-blue);
   text-align: center;
-  white-space: nowrap;
+  white-space: normal;
+  max-width: 22rem;
 }
 
 .intro-lead {
@@ -473,8 +508,8 @@ html.ios-safari .screen.loading-screen {
   z-index: 0;
   left: 50%;
   top: 56%;
-  width: 172%;
-  height: 138%;
+  width: 380px;
+  height: 270px;
   transform: translate(-50%, -50%);
   pointer-events: none;
 }
@@ -925,6 +960,11 @@ html.ios-safari .screen.loading-screen {
   transform: rotate(-16deg);
 }
 
+html[lang="en"] .stamp {
+  font-size: clamp(0.95rem, 3.6vw, 1.25rem);
+  padding: 2px 8px;
+}
+
 @keyframes feedback-in {
   from {
     transform: translateY(16px);
@@ -1237,10 +1277,11 @@ html.ios-safari .screen.loading-screen {
 }
 
 .start-screen .game-mark {
-  --mark: clamp(0.72, calc(100cqh / 760px), 1.22);
+  --mark: clamp(1.15, calc(100cqh / 500px), 1.95);
   transform: scale(var(--mark));
   transform-origin: center center;
   margin-block: calc((var(--mark) - 1) * 96px);
+  overflow: visible;
 }
 
 .start-screen .tagline {
@@ -1346,7 +1387,7 @@ html.ios-safari .screen.loading-screen {
   }
 
   .start-screen .game-mark {
-    --mark: clamp(0.7, calc(100cqh / 820px), 1);
+    --mark: clamp(1.1, calc(100cqh / 560px), 1.58);
     margin-block: calc((var(--mark) - 1) * 96px);
   }
 
@@ -1373,6 +1414,28 @@ html.ios-safari .screen.loading-screen {
 
   .game-mark-sub {
     font-size: 26px;
+  }
+
+  .game-mark-type {
+    width: 168px;
+  }
+
+  .game-mark-word::before {
+    width: 168px;
+    height: 96px;
+  }
+
+  .game-mark .festive-glow {
+    width: 300px;
+    height: 212px;
+  }
+
+  html[lang="en"] .game-mark-word {
+    font-size: 26px;
+  }
+
+  html[lang="en"] .game-mark-sub {
+    font-size: 17px;
   }
 
   .start-screen .start-body {
@@ -1430,7 +1493,7 @@ html.ios-safari .screen.loading-screen {
 
 @media (min-width: 700px) and (min-height: 1080px) {
   .start-screen .game-mark {
-    --mark: 1.2;
+    --mark: 1.95;
   }
 
   .start-screen .start-story {
@@ -1454,7 +1517,7 @@ html.ios-safari .screen.loading-screen {
   }
 
   .start-screen .game-mark {
-    --mark: 1.32;
+    --mark: 2.1;
   }
 
   .start-screen .start-body {
@@ -1464,7 +1527,7 @@ html.ios-safari .screen.loading-screen {
 
 @media (min-width: 768px) and (max-width: 1200px) and (min-height: 1000px) {
   .start-screen .game-mark {
-    --mark: 1.62;
+    --mark: 2.35;
   }
 
   .start-screen .tagline {
@@ -1509,7 +1572,7 @@ html.ios-safari .screen.loading-screen {
 
 @media (min-width: 1200px) and (min-height: 1040px) {
   .start-screen .game-mark {
-    --mark: clamp(1.44, calc(100dvh / 720px), 1.55);
+    --mark: clamp(2.1, calc(100dvh / 560px), 2.4);
   }
 
   .start-screen .start-body {

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from "react"
 import { gameConfig } from "./config/gameConfig"
 import { readDevOverrides } from "./config/devOverrides"
-import { loadGameContent } from "./content/loadContent"
+import { useLocale } from "./content/LocaleContext"
 import { ContentError } from "./components/ContentError"
 import { EndScreen } from "./components/EndScreen"
 import { GameScreen } from "./components/GameScreen"
@@ -48,7 +48,7 @@ function useFontsReady(): boolean {
 }
 
 /** Boxes that jump when fonts, the logo, or container sizes settle. */
-const LAYOUT_PROBES = ".logo, .game-mark, .tagline, .intro-lead, .concept, .legend, .start-dock, .app-frame"
+const LAYOUT_PROBES = ".logo, .game-mark, .tagline, .intro-lead, .concept, .start-dock, .app-frame"
 
 function layoutSnapshot(): string {
   const root = document.querySelector(".start-screen")
@@ -64,7 +64,11 @@ function useSettledLayout(enabled: boolean): boolean {
   const [settled, setSettled] = useState(false)
 
   useEffect(() => {
-    if (!enabled || settled) return
+    if (!enabled) {
+      setSettled(false)
+      return
+    }
+    if (settled) return
     let cancelled = false
     let last = ""
     let stable = 0
@@ -111,7 +115,7 @@ function useMinimumLoadingTime(ms: number): boolean {
 }
 
 export function App() {
-  const loaded = useMemo(() => loadGameContent(), [])
+  const { locale, meta, loaded, content } = useLocale()
   const imageSources = useMemo(() => {
     const logo = publicUrl("brand/logo-color-type.svg")
     if (!loaded.ok) return [logo]
@@ -129,11 +133,15 @@ export function App() {
   const assetsReady = loaded.ok && imagesReady && fontsReady && minimumTimeDone
   const settled = useSettledLayout(assetsReady)
   const [round, setRound] = useState<RoundState | null>(null)
-  const banks = loaded.ok ? loaded.content.feedback : null
+  const banks = content?.feedback ?? null
 
   useEffect(() => {
-    document.title = gameConfig.gameName
-  }, [])
+    document.title = meta.gameName
+  }, [meta.gameName])
+
+  useEffect(() => {
+    setRound(null)
+  }, [locale])
 
   const onDecide = useCallback(
     (direction: Direction) => {
@@ -148,10 +156,10 @@ export function App() {
   }, [])
 
   const onStart = useCallback(() => {
-    if (!loaded.ok) return
+    if (!content) return
     const dev = readDevOverrides()
     const config = { ...gameConfig, ...dev.config }
-    let profiles = loaded.content.profiles
+    let profiles = content.profiles
     if (dev.focusId) {
       const found = profiles.filter((profile) => profile.id === dev.focusId)
       if (found.length > 0) {
@@ -160,8 +168,8 @@ export function App() {
         config.roundLength = found.length
       }
     }
-    setRound(createRound(profiles, config, loaded.content.feedback))
-  }, [loaded])
+    setRound(createRound(profiles, config, content.feedback))
+  }, [content])
 
   if (!loaded.ok) return <ContentError errors={loaded.errors} />
 

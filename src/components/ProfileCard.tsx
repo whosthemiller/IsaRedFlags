@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { faceCropFor, faceCropStyle } from "../content/faceCrops"
-import { uiCopy } from "../content/uiCopy"
+import { useLocale } from "../content/LocaleContext"
 import { useReducedMotion } from "../hooks/useReducedMotion"
 import { useSwipe } from "../hooks/useSwipe"
 import type { Direction, Profile } from "../types/content"
@@ -14,6 +14,7 @@ type ProfileCardProps = {
 }
 
 export function ProfileCard({ profile, enabled, onCommit }: ProfileCardProps) {
+  const { copy } = useLocale()
   const reducedMotion = useReducedMotion()
   const { drag, cardRef, handlers } = useSwipe({ enabled, reducedMotion, onCommit })
   const rotate = Math.max(-12, Math.min(12, drag.x / 18))
@@ -35,11 +36,11 @@ export function ProfileCard({ profile, enabled, onCommit }: ProfileCardProps) {
       <div className="wash wash-nope" style={{ opacity: passOpacity * 0.28 }} />
       <div className="wash wash-like" style={{ opacity: likeOpacity * 0.28 }} />
       <div className="stamps" dir="ltr" aria-hidden="true">
-        <div className="stamp stamp-pass" dir="rtl" style={{ opacity: passOpacity }}>
-          {uiCopy.pass}
+        <div className="stamp stamp-pass" style={{ opacity: passOpacity }}>
+          {copy.pass}
         </div>
-        <div className="stamp stamp-like" dir="rtl" style={{ opacity: likeOpacity }}>
-          {uiCopy.like}
+        <div className="stamp stamp-like" style={{ opacity: likeOpacity }}>
+          {copy.like}
         </div>
       </div>
       <div className="card-hero">
@@ -54,7 +55,7 @@ export function ProfileCard({ profile, enabled, onCommit }: ProfileCardProps) {
       </div>
       <div className="card-body">
         <section>
-          <h2 className="section-label">{uiCopy.about}</h2>
+          <h2 className="section-label">{copy.about}</h2>
           <p className="prose about-copy">{profile.bio}</p>
         </section>
         <section className="chat">

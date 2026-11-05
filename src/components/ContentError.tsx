@@ -1,8 +1,9 @@
-import { uiCopy } from "../content/uiCopy"
+import { useLocale } from "../content/LocaleContext"
 import { AppFrame } from "./AppFrame"
 import { Logo } from "./Logo"
 
 export function ContentError({ errors }: { errors: string[] }) {
+  const { copy } = useLocale()
   return (
     <div className="screen start-screen">
       <AppFrame watch={errors.length}>
@@ -10,7 +11,7 @@ export function ContentError({ errors }: { errors: string[] }) {
           <Logo />
         </header>
         <div className="start-body">
-          <h1>{uiCopy.contentError}</h1>
+          <h1>{copy.contentError}</h1>
           {import.meta.env.DEV ? (
             <ul className="error-list">
               {errors.map((error) => (

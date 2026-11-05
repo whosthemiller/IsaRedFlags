@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { faceCropFor, portraitFocusStyle } from "../content/faceCrops"
-import { uiCopy } from "../content/uiCopy"
+import { useLocale } from "../content/LocaleContext"
 import type { Profile } from "../types/content"
 import { profileImageSrc } from "../utils/game"
 import { publicUrl } from "../utils/publicUrl"
@@ -43,6 +43,7 @@ function hashString(value: string): number {
 }
 
 export function Portrait({ profile }: { profile: Profile }) {
+  const { copy } = useLocale()
   const [failed, setFailed] = useState(false)
   const src = profileImageSrc(profile.image)
   const crop = faceCropFor(profile.image)
@@ -75,7 +76,7 @@ export function Portrait({ profile }: { profile: Profile }) {
         <span className="portrait-initial" aria-hidden="true">
           {initial}
         </span>
-        <span className="portrait-caption">{uiCopy.noPhoto}</span>
+        <span className="portrait-caption">{copy.noPhoto}</span>
       </div>
     </div>
   )

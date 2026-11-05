@@ -1,8 +1,7 @@
-import { uiCopy } from "../content/uiCopy"
+import { useLocale } from "../content/LocaleContext"
 import { AppFrame } from "./AppFrame"
 import { Disclaimer } from "./Disclaimer"
 import { GameMark } from "./GameMark"
-import { IconHeart, IconNope } from "./icons"
 import { Logo } from "./Logo"
 
 type StartScreenProps = {
@@ -11,53 +10,40 @@ type StartScreenProps = {
 }
 
 export function StartScreen({ onStart, inert = false }: StartScreenProps) {
+  const { copy, meta, setLocale } = useLocale()
+
   return (
     <div className="screen start-screen" inert={inert || undefined} aria-hidden={inert || undefined}>
       <AppFrame>
         <header className="app-bar">
           <Logo />
           <span className="app-bar-gap" />
+          <div className="tools">
+            <button
+              type="button"
+              className="lang-toggle"
+              onClick={() => setLocale(meta.switchToLocale)}
+              aria-label={meta.switchToLocale === "en" ? "Switch to English" : "מעבר לעברית"}
+            >
+              {meta.switchToLabel}
+            </button>
+          </div>
         </header>
         <div className="start-body">
           <div className="start-hero">
             <div className="game-lockup">
               <GameMark />
-              <p className="tagline prose">{uiCopy.logoTagline}</p>
+              <p className="tagline prose">{copy.logoTagline}</p>
             </div>
           </div>
           <div className="start-story">
-            <p className="intro-lead prose">{uiCopy.introLead}</p>
-            <p className="concept prose">{uiCopy.introDecide}</p>
-            <p className="concept prose">{uiCopy.introDiscover}</p>
-          </div>
-          <div className="legend" dir="ltr">
-            <div className="legend-item">
-              <span className="orb orb-nope">
-                <IconNope />
-              </span>
-              <span className="action-label" dir="rtl">
-                {uiCopy.pass}
-              </span>
-              <span className="action-meta" dir="rtl">
-                {uiCopy.passMeta}
-              </span>
-            </div>
-            <div className="legend-item">
-              <span className="orb orb-like">
-                <IconHeart />
-              </span>
-              <span className="action-label" dir="rtl">
-                {uiCopy.like}
-              </span>
-              <span className="action-meta" dir="rtl">
-                {uiCopy.likeMeta}
-              </span>
-            </div>
+            <p className="intro-lead prose">{copy.introLead}</p>
+            <p className="concept prose">{copy.introDecide}</p>
           </div>
         </div>
         <footer className="dock start-dock">
           <button type="button" className="primary-button" onClick={onStart}>
-            {uiCopy.introCta}
+            {copy.introCta}
           </button>
           <Disclaimer />
         </footer>

@@ -165,8 +165,16 @@ export function validateContent(value: unknown): LoadResult {
   if (typeof value.schemaVersion !== "string" || value.schemaVersion.length === 0) {
     errors.push("חסר schemaVersion")
   }
-  if (value.language !== "he") errors.push("language חייב להיות he")
-  if (value.direction !== "rtl") errors.push("direction חייב להיות rtl")
+  const language = value.language
+  if (language !== "he" && language !== "en") errors.push("language חייב להיות he או en")
+  const direction = value.direction
+  if (direction !== "rtl" && direction !== "ltr") errors.push("direction חייב להיות rtl או ltr")
+  if (
+    (language === "he" && direction === "ltr") ||
+    (language === "en" && direction === "rtl")
+  ) {
+    errors.push("language ו-direction אינם תואמים")
+  }
 
   const gameConcept = requireTextList(value.gameConcept, "gameConcept", errors)
   const nameCandidates = requireTextList(value.nameCandidates, "nameCandidates", errors)
@@ -219,12 +227,15 @@ export function validateContent(value: unknown): LoadResult {
     return { ok: false, errors }
   }
 
+  if (language !== "he" && language !== "en") return { ok: false, errors }
+  if (direction !== "rtl" && direction !== "ltr") return { ok: false, errors }
+
   return {
     ok: true,
     content: {
       schemaVersion: value.schemaVersion,
-      language: "he",
-      direction: "rtl",
+      language,
+      direction,
       gameConcept,
       nameCandidates,
       taglines,

@@ -1,0 +1,357 @@
+{
+  "schemaVersion": "1.0.0",
+  "language": "en",
+  "direction": "ltr",
+  "sourceDocument": "investment_at_first_sight_EN.md",
+  "editorialNote": "English localization of the Hebrew game content. Profile images are line illustrations in the ISA illustration style, not photographs.",
+  "gameConcept": [
+    "A swipe game inspired by dating apps: every round features a different person's profile, complete with a bio and opening message. Players decide whether to swipe right (worth getting to know / green flag) or left (not my type / red flag). After each choice, a short punchline and a professional explanation reveal the warning sign or positive indicator.",
+    "The creative idea: an investment is a relationship, too. We look at who's promising too much, who's applying pressure, who's keeping things vague, and who's willing to let you get to know them and do your homework before committing. The humor starts in the world of dating; the lesson lands in the feedback. A green flag is not approval to invest or an endorsement of any person or product."
+  ],
+  "nameCandidates": [
+    "Not My Type",
+    "Return at First Sight",
+    "Love on Paper",
+    "Investment at First Sight",
+    "They're Great and All, But…"
+  ],
+  "taglines": [
+    "Your taste in women is your problem. When it comes to investing, we can help.",
+    "Your taste in men is your problem. When it comes to investing, we can help.",
+    "Save the red flags for your exes, not your investment portfolio."
+  ],
+  "feedback": {
+    "correctRed": [
+      "A second date? Better not.",
+      "You got out before your wallet fell in love.",
+      "Not my type. Not my portfolio's type, either.",
+      {
+        "m": "You spotted the red flag before he spotted your money.",
+        "f": "You spotted the red flag before she spotted your money."
+      }
+    ],
+    "incorrectRed": [
+      {
+        "m": "He calls it chemistry. We call it a red flag.",
+        "f": "She calls it chemistry. We call it a red flag."
+      },
+      {
+        "m": "You can fix him. Sure.",
+        "f": "You can fix her. Sure."
+      },
+      "Butterflies aren't due diligence.",
+      "Well, you fell hard. Good thing it's just a game."
+    ],
+    "correctGreen": [
+      {
+        "m": "Well, look at that. A guy who reads the fine print.",
+        "f": "Well, look at that. A woman who reads the fine print."
+      },
+      "Turns out not everyone's out to rip you off."
+    ],
+    "incorrectGreen": [
+      {
+        "m": "Babe, not every guy is your ex.",
+        "f": "Babe, not every woman is your ex."
+      },
+      {
+        "m": "Just because he's taking his time doesn't mean he's stringing you along.",
+        "f": "Just because she's taking her time doesn't mean she's stringing you along."
+      }
+    ],
+    "end": [
+      "You've got a radar for red flags. Now use it outside the app, too."
+    ]
+  },
+  "profiles": [
+    {
+      "id": "profile-01",
+      "name": "Nadav",
+      "gender": "m",
+      "age": 33,
+      "flag": "red",
+      "difficulty": "medium",
+      "tagline": "Lives in Dubai · Real estate developer · Back home once a month",
+      "bio": "“I've got an apartment with a sea view, big plans for the future, and I know exactly what I want. Looking for a woman who's ready to take the plunge with me without making a big deal out of every little thing. I promise I'll take care of you.”",
+      "openingMessage": "“Are you spontaneous, or are you one of those people who needs to know everything first?”",
+      "explanation": "Avoiding questions about details and terms is a reason to investigate before investing.",
+      "image": "profile-01.jpg"
+    },
+    {
+      "id": "profile-02",
+      "name": "Michael",
+      "gender": "m",
+      "age": 30,
+      "flag": "red",
+      "difficulty": "easy",
+      "tagline": "Businessman · Looking for something long-term",
+      "bio": "“I'm not like other guys. With me, there's literally no risk. I've got a steady job, my own place, and a guaranteed 20% return. My mom says I'm a catch.”",
+      "openingMessage": "“So, are you giving me a chance, or are you scared of success? Just don't take too long to decide. I won't be here forever.”",
+      "explanation": "Promises of unusually high, guaranteed returns with no risk are warning signs. Extremely high claimed returns are another red flag.",
+      "image": "profile-02.jpg"
+    },
+    {
+      "id": "profile-03",
+      "name": "Guy",
+      "gender": "m",
+      "age": 34,
+      "flag": "red",
+      "difficulty": "easy",
+      "tagline": "Founder & CEO · Never misses Pilates",
+      "bio": "“All my exes made at least 30% off me. I know that sounds crazy, but I've got receipts. I'm not into games—unless it's padel.”",
+      "openingMessage": "“If you want, I can send screenshots of everyone in the group's profits.”",
+      "explanation": "Screenshots and success stories don't prove that an offer is trustworthy or that future returns are guaranteed.",
+      "image": "profile-03.jpg"
+    },
+    {
+      "id": "profile-04",
+      "name": "Yonatan",
+      "gender": "m",
+      "age": 29,
+      "flag": "red",
+      "difficulty": "hard",
+      "tagline": "Self-employed · Marathon runner",
+      "bio": "“Not really into grand promises. I believe in honesty, open communication, and actually getting to know someone before committing. I like running, cooking, and giving friends advice about life and money. Apparently I'm pretty good at it.”",
+      "openingMessage": "“I know exactly what's right for you. I haven't had any formal training, but trust me, I've got plenty of experience.”",
+      "explanation": "Experience and confidence are no substitute for the required investment-advice license. Check who's giving you personalized advice about your money.",
+      "image": "profile-04.jpg"
+    },
+    {
+      "id": "profile-05",
+      "name": "Adam",
+      "gender": "m",
+      "age": 33,
+      "flag": "green",
+      "difficulty": "medium",
+      "tagline": "Loves cooking · Licensed · Ready for something serious",
+      "bio": "“Ready to invest in a relationship. I like open communication, I'm not afraid of commitment, and I'd rather get to know someone before diving in. And yes, my license is in investment advice. Parallel parking in Tel Aviv? Still working on that.”",
+      "openingMessage": "“Before we talk investments, maybe we should figure out what you're looking for first?”",
+      "customFeedback": "A man with a license who actually listens. Rare.",
+      "explanation": "A relevant, verifiable license and a personal assessment of someone's financial circumstances and investment goals are positive signs—not automatic approval of any investment offer.",
+      "image": "profile-05.jpg"
+    },
+    {
+      "id": "profile-06",
+      "name": "Noa",
+      "gender": "f",
+      "age": 28,
+      "flag": "green",
+      "difficulty": "medium",
+      "tagline": "Analyst · Apologizes in advance for her playlist",
+      "bio": "“I don't believe in love at first sight. I'd rather take things slow, discover the less photogenic sides of each other, and avoid promises I can't keep. In life and in my investment portfolio, I'm all about transparency.”",
+      "openingMessage": "“I can tell you what doesn't work so well about me, too. Want the short version or the long one?”",
+      "explanation": "Being transparent about limitations and risks is a positive sign, but it's still important to check the details of the investment offer.",
+      "image": "profile-06.jpg"
+    },
+    {
+      "id": "profile-07",
+      "name": "Tom",
+      "gender": "m",
+      "age": 31,
+      "flag": "red",
+      "difficulty": "medium",
+      "tagline": "Vegan · All-in on everything I do",
+      "bio": "“I'm an all-or-nothing kind of guy. When I feel a connection, I go all in. I don't believe in spreading my money—or my energy—across too many things.”",
+      "openingMessage": "“I know it's early, but I think you should stop talking to other people.”",
+      "customFeedback": "He calls it exclusivity. We call it concentration risk.",
+      "explanation": "Putting all your investment money into one asset increases your exposure to risk. Diversification may help reduce it.",
+      "image": "profile-07.jpg"
+    },
+    {
+      "id": "profile-08",
+      "name": "Rafael",
+      "gender": "m",
+      "age": 35,
+      "flag": "red",
+      "difficulty": "medium",
+      "tagline": "Manager · Mysterious, in a good way",
+      "bio": "“I believe trust is the foundation of any relationship. That's how I work with my clients, too. I don't like getting into every tiny detail. I'd rather people trust me and let me do what I know best.”",
+      "openingMessage": "“If you really trust me, why do you need to know everything?”",
+      "customFeedback": "A mysterious man? Fun. Money disappearing mysteriously? Less fun.",
+      "explanation": "Avoiding questions about how your money or savings are used, or failing to explain the terms and risks, is a warning sign.",
+      "image": "profile-08.jpg"
+    },
+    {
+      "id": "profile-09",
+      "name": "Ori",
+      "gender": "m",
+      "age": 30,
+      "flag": "green",
+      "difficulty": "medium",
+      "tagline": "Loves reading · Lives in Tel Aviv",
+      "bio": "“I'm not the guy who'll whisk you off to the Maldives after two dates. I'm not trying to get rich by Thursday with my investments, either. I'm more the guy who'll remember how you take your coffee ten years from now.”",
+      "openingMessage": "“I'm all for taking things slow. Good things don't have to happen in a week.”",
+      "explanation": "Avoiding get-rich-quick promises, being patient, and considering your investment time horizon are positive signs.",
+      "image": "profile-09.jpg"
+    },
+    {
+      "id": "profile-10",
+      "name": "Shachar",
+      "gender": "f",
+      "age": 27,
+      "flag": "red",
+      "difficulty": "medium",
+      "tagline": "Dog walker · Mostly available after 11 p.m.",
+      "bio": "“If there's a spark, why wait? I love making quick decisions, the adrenaline rush, and the feeling of getting there first. Opportunities don't wait around for people who spend too long doing the math.”",
+      "openingMessage": "“You've got ten minutes to decide if you're interested. After that, I'm moving on.”",
+      "explanation": "Pressure to make financial decisions quickly can prevent you from checking the details carefully.",
+      "image": "profile-10.jpg"
+    },
+    {
+      "id": "profile-11",
+      "name": "Ayelet",
+      "gender": "f",
+      "age": 38,
+      "flag": "green",
+      "difficulty": "medium",
+      "tagline": "Lawyer · Looking for stability",
+      "bio": "“Not into drama. I like things organized and transparent—with paperwork, clear expectations, and an actual conversation about what we're each looking for. A bit nerdy, apparently, but it works pretty well in the long run.”",
+      "openingMessage": "“Want me to send you all the details first so you can see whether it's even relevant?”",
+      "explanation": "Sharing information upfront and giving someone time to review it are positive signs, though the information itself still needs to be verified.",
+      "image": "profile-11.jpg"
+    },
+    {
+      "id": "profile-12",
+      "name": "Lior",
+      "gender": "f",
+      "age": 32,
+      "flag": "red",
+      "difficulty": "medium",
+      "tagline": "AI entrepreneur · Makes magic happen",
+      "bio": "“My friends call me a magician. I've built a system that knows you better than you know yourself. All you have to do is let me take the lead, without grilling me about how it works.”",
+      "openingMessage": "“Trust the algorithm. It already knows what's best for you.”",
+      "explanation": "Using AI doesn't remove the need to understand the product, its risks, and who's managing your money. No one knows you better than you know yourself.",
+      "image": "profile-12.jpg"
+    },
+    {
+      "id": "profile-13",
+      "name": "Daniela",
+      "gender": "f",
+      "age": 29,
+      "flag": "green",
+      "difficulty": "hard",
+      "tagline": "Graphic designer · Asks way too many questions on a first date",
+      "bio": "“I actually like difficult questions. If something isn't clear, I think we should say so, even if it kills the mood a little. And if we're not a match, there's no point forcing it.”",
+      "openingMessage": "“What's the one thing you'd want to know before saying yes?”",
+      "explanation": "Encouraging questions and clarifying individual needs is a positive sign, though it doesn't prove trustworthiness on its own.",
+      "image": "profile-13.jpg"
+    },
+    {
+      "id": "profile-14",
+      "name": "Roni",
+      "gender": "f",
+      "age": 26,
+      "flag": "red",
+      "difficulty": "easy",
+      "tagline": "Mentor · Lives in Jerusalem",
+      "bio": "“I got out of the rat race before everyone else. I'm living exactly the life I dreamed of, and I teach others how to do the same. People who know me know I have nothing to prove.”",
+      "openingMessage": "“Come join my private group. You'll see how everyone's already made it.”",
+      "explanation": "Big promises and success stories in private groups are no substitute for checking the business model and the people behind it. And if she's already living the dream, why is she selling you something?",
+      "image": "profile-14.jpg"
+    },
+    {
+      "id": "profile-15",
+      "name": "Ido",
+      "gender": "m",
+      "age": 36,
+      "flag": "red",
+      "difficulty": "medium",
+      "tagline": "Startup founder · Looking for a partner for life",
+      "bio": "“I'm all about equality. It's just that when it comes to money, I prefer one of us to handle everything so we don't argue. What you don't know can't stress you out.”",
+      "openingMessage": "“Let me take care of it. It'll be easier for both of us.”",
+      "explanation": "A lack of transparency or oversight when someone manages money on your behalf is a warning sign.",
+      "image": "profile-15.jpg"
+    },
+    {
+      "id": "profile-16",
+      "name": "Bar",
+      "gender": "f",
+      "age": 33,
+      "flag": "green",
+      "difficulty": "medium",
+      "tagline": "Architect · Plans vacations in Excel",
+      "bio": "“Spontaneous, as long as you give me two days' notice. I like knowing where things are going, but I don't need to plan a wedding before the first date. I believe in setting expectations and being allowed to change plans—as long as both people are in the loop.”",
+      "openingMessage": "“Tell me what works for you and what absolutely doesn't, and we'll see if there's a connection.”",
+      "explanation": "Understanding goals, boundaries, and the ability to tolerate risk is an important part of assessing financial suitability.",
+      "image": "profile-16.jpg"
+    },
+    {
+      "id": "profile-17",
+      "name": "Ofir",
+      "gender": "f",
+      "age": 30,
+      "flag": "red",
+      "difficulty": "easy",
+      "tagline": "Overseas real estate · Always on the way to the airport",
+      "bio": "“I believe in privacy. Not everything needs to be online, and not every transaction needs to go through a bank. People who trust me profit.”",
+      "openingMessage": "“Just transfer it to my business partner's account abroad. It'll save us a lot of paperwork.”",
+      "explanation": "Being asked to transfer money to a third party or to an account that doesn't match the party named in the agreement is a reason to stop and verify the details.",
+      "image": "profile-17.jpg"
+    },
+    {
+      "id": "profile-18",
+      "name": "Mai",
+      "gender": "f",
+      "age": 28,
+      "flag": "green",
+      "difficulty": "easy",
+      "tagline": "Researcher · Prefers long conversations",
+      "bio": "“Yes, I'm the kind of person who checks restaurant reviews before leaving home. I'm not about to promise a future together just because we had one good conversation.”",
+      "openingMessage": "“Can we ask a few more questions before deciding?”",
+      "explanation": "Research, comparing alternatives, and avoiding rushed decisions are positive habits.",
+      "image": "profile-18.jpg"
+    },
+    {
+      "id": "profile-19",
+      "name": "Eitan",
+      "gender": "m",
+      "age": 35,
+      "flag": "red",
+      "difficulty": "medium",
+      "tagline": "Doesn't believe in astrology · Still a Libra",
+      "bio": "“I don't judge people who don't understand me. Some things just aren't for everyone. Those on the inside get it. Everyone else keeps asking questions.”",
+      "openingMessage": "“There's a reason I can't send you all the details in chat. We can talk once you've paid a commitment fee.”",
+      "explanation": "Withholding information and asking for money before providing full details are warning signs.",
+      "image": "profile-19.jpg"
+    },
+    {
+      "id": "profile-20",
+      "name": "Yael",
+      "gender": "f",
+      "age": 31,
+      "flag": "green",
+      "difficulty": "hard",
+      "tagline": "Looking for something serious · Works in tech",
+      "bio": "“My fantasy? A relationship with complete transparency. Not everything in life is glamorous, and that's okay. I'd rather you knew the risks before falling for the potential.”",
+      "openingMessage": "“Can we start with what might not work?”",
+      "explanation": "Discussing risks and the possibility of losing money is a positive practice, not a guarantee of results.",
+      "image": "profile-20.jpg"
+    },
+    {
+      "id": "profile-21",
+      "name": "Amit",
+      "gender": "f",
+      "age": 29,
+      "flag": "green",
+      "difficulty": "medium",
+      "tagline": "Master's student · Not a morning person",
+      "bio": "“I don't have an answer for everything, and I don't pretend to. I read, compare, ask for advice, and don't count on shortcuts. First dates, though? I like to keep those casual.”",
+      "openingMessage": "“Coffee? I promise I won't ask you to decide our entire future by the end of the evening.”",
+      "explanation": "Learning, comparing options, and making decisions without pressure are good habits.",
+      "image": "profile-21.jpg"
+    },
+    {
+      "id": "profile-22",
+      "name": "Kobi",
+      "gender": "m",
+      "age": 37,
+      "flag": "red",
+      "difficulty": "medium",
+      "tagline": "Mama's boy · Plant dad",
+      "bio": "“Everyone's scared of taking risks because that's what they've been taught. I prefer people who think big. In life, you've got to know when to take a gamble on the right thing. Nothing ventured, nothing gained.”",
+      "openingMessage": "“Don't worry. Worst-case scenario, you get a good story out of it.”",
+      "explanation": "Dismissing the possibility of losses or minimizing risks is a warning sign when real money is involved. The stock market isn't a casino.",
+      "image": "profile-22.jpg"
+    }
+  ]
+}

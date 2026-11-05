@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react"
-import { uiCopy } from "../content/uiCopy"
+import { useLocale } from "../content/LocaleContext"
 import type { Outcome, Profile } from "../types/content"
 import { IconFlag } from "./icons"
 
@@ -10,10 +10,11 @@ type FeedbackPanelProps = {
 }
 
 export function FeedbackPanel({ profile, outcome, line }: FeedbackPanelProps) {
+  const { copy } = useLocale()
   const panelRef = useRef<HTMLElement>(null)
   const correct = outcome.startsWith("correct")
-  const kicker = correct ? uiCopy.correct : line
-  const flagLabel = profile.flag === "red" ? uiCopy.redFlag : uiCopy.greenFlag
+  const kicker = correct ? copy.correct : line
+  const flagLabel = profile.flag === "red" ? copy.redFlag : copy.greenFlag
 
   useEffect(() => {
     panelRef.current?.focus()

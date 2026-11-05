@@ -32,8 +32,8 @@ export interface FeedbackBanks {
 
 export interface GameContent {
   schemaVersion: string
-  language: "he"
-  direction: "rtl"
+  language: "he" | "en"
+  direction: "rtl" | "ltr"
   gameConcept: string[]
   nameCandidates: string[]
   taglines: string[]

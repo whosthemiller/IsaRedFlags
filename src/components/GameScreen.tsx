@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { uiCopy } from "../content/uiCopy"
+import { useLocale } from "../content/LocaleContext"
 import type { Direction, RoundState } from "../types/content"
 import { outcomeOf } from "../utils/game"
 import { AppFrame } from "./AppFrame"
@@ -17,6 +17,7 @@ type GameScreenProps = {
 }
 
 export function GameScreen({ round, onDecide, onNext }: GameScreenProps) {
+  const { copy } = useLocale()
   const profile = round.profiles[round.index]
   const next = round.profiles[round.index + 1]
   const total = round.length
@@ -51,7 +52,7 @@ export function GameScreen({ round, onDecide, onNext }: GameScreenProps) {
           <p
             className="app-count"
             role="progressbar"
-            aria-label={uiCopy.progress}
+            aria-label={copy.progress}
             aria-valuemin={1}
             aria-valuemax={total}
             aria-valuenow={round.index + 1}
@@ -63,11 +64,11 @@ export function GameScreen({ round, onDecide, onNext }: GameScreenProps) {
           </p>
           <div className="tools">
             {round.answered > 0 ? (
-              <p className="score" aria-label={`${uiCopy.scoreLabel} ${round.correct} ${uiCopy.of} ${round.answered}`}>
+              <p className="score" aria-label={`${copy.scoreLabel} ${round.correct} ${copy.of} ${round.answered}`}>
                 <bdi className="score-fraction" dir="ltr">
                   {round.correct}/{round.answered}
                 </bdi>
-                <span className="score-label">{uiCopy.scoreLabel}</span>
+                <span className="score-label">{copy.scoreLabel}</span>
               </p>
             ) : null}
           </div>
@@ -95,13 +96,13 @@ export function GameScreen({ round, onDecide, onNext }: GameScreenProps) {
         <footer className="dock">
           {round.phase === "card" ? (
             <>
-              <p className="hint">{uiCopy.swipeHint}</p>
-              <p className="sr-only">{uiCopy.keyboardHint}</p>
+              <p className="hint">{copy.swipeHint}</p>
+              <p className="sr-only">{copy.keyboardHint}</p>
               <div className="actions" dir="ltr">
                 <button
                   type="button"
                   className="action"
-                  aria-label={uiCopy.pass}
+                  aria-label={copy.pass}
                   aria-keyshortcuts="ArrowLeft"
                   onClick={() => onDecide("left")}
                 >
@@ -112,7 +113,7 @@ export function GameScreen({ round, onDecide, onNext }: GameScreenProps) {
                 <button
                   type="button"
                   className="action"
-                  aria-label={uiCopy.like}
+                  aria-label={copy.like}
                   aria-keyshortcuts="ArrowRight"
                   onClick={() => onDecide("right")}
                 >
@@ -124,7 +125,7 @@ export function GameScreen({ round, onDecide, onNext }: GameScreenProps) {
             </>
           ) : (
             <button type="button" className="next-button" onClick={onNext}>
-              {uiCopy.next}
+              {copy.next}
             </button>
           )}
           <Disclaimer />

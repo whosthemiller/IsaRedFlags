@@ -1,5 +1,6 @@
-import { uiCopy } from "../content/uiCopy"
+import { useLocale } from "../content/LocaleContext"
 
 export function Disclaimer() {
-  return <p className="disclaimer">{uiCopy.disclaimer}</p>
+  const { copy } = useLocale()
+  return <p className="disclaimer">{copy.disclaimer}</p>
 }

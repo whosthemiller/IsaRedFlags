@@ -1,6 +1,9 @@
+import { useLocale } from "../content/LocaleContext"
 import { Spark } from "./Spark"
 
 export function GameMark() {
+  const { meta } = useLocale()
+
   return (
     <h1 className="game-mark">
       <span className="festive-glow" aria-hidden="true" />
@@ -35,8 +38,8 @@ export function GameMark() {
         </span>
       </span>
       <span className="game-mark-type">
-        <span className="game-mark-word">השקעה</span>
-        <span className="game-mark-sub">ממבט ראשון</span>
+        <span className="game-mark-word">{meta.markWord}</span>
+        <span className="game-mark-sub">{meta.markSub}</span>
       </span>
     </h1>
   )

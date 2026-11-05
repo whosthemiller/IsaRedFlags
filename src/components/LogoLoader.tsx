@@ -39,13 +39,13 @@ export function minimumLogoLoadingMs(): number {
   return span + MIN_LOGO_LOOPS * LOGO_WAVE_MS
 }
 
-export function LogoLoader() {
+export function LogoLoader({ label }: { label?: string } = {}) {
   return (
     <div
       className="logo-loader"
       style={{ ["--logo-wave" as string]: `${LOGO_WAVE_MS}ms` }}
       role="img"
-      aria-label="הלוגו של הרשות לניירות ערך נטען"
+      aria-label={label ?? "הלוגו של הרשות לניירות ערך נטען"}
     >
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 286.84 258.03" aria-hidden="true">
         {bars.map((bar) => (

@@ -52,10 +52,21 @@ describe("validateContent", () => {
     expect(result.errors.some((error) => error.includes("explanation"))).toBe(true)
   })
 
-  it("rejects the wrong language direction", () => {
+  it("rejects a mismatched language and direction", () => {
     const content = sample()
     content.direction = "ltr"
     const result = validateContent(content)
     expect(result.ok).toBe(false)
+  })
+
+  it("accepts English content with ltr direction", () => {
+    const content = sample()
+    content.language = "en"
+    content.direction = "ltr"
+    const result = validateContent(content)
+    expect(result.ok).toBe(true)
+    if (!result.ok) return
+    expect(result.content.language).toBe("en")
+    expect(result.content.direction).toBe("ltr")
   })
 })
